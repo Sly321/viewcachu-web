@@ -1,0 +1,19 @@
+{
+  "name": "src",
+  "homepage": "https://github.com/Sly321/viewcachu-web",
+  "authors": [
+    "Sven Liebig <liebigsv@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/resources/lib"
+  ],
+  "dependencies": {
+    "firebase": "^4.2.0"
+  }
+}
