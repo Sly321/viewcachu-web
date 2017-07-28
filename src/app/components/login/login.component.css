@@ -13,11 +13,25 @@
 	color: white;
 	width: 250px;
 	padding: 25px;
-	height: 250px;
 }
 
 label, input {
-	float: left;
-	width: 100%;
+	float: center;
+	width: calc(100% - 10px);
 	text-align: left;
+}
+
+label {
+	padding: 5px 0;
+}
+
+input {
+	border: none;
+	background: #3D3D3D;
+	color: white;
+	padding: 5px;
+	margin-top: 5px;
+	border-radius: 3px;
+	outline: none;
+	text-align: center;
 }

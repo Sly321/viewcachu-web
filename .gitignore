@@ -7,7 +7,7 @@
 
 # dependencies
 /node_modules
-/src/app/resources
+/src/assets/animate.css
 
 # IDEs and editors
 /.idea
