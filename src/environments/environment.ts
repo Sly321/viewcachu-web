@@ -5,5 +5,13 @@
 
 export const environment = {
 	production: false,
-	login: true
+	login: true,
+	firebase: {
+		apiKey: 'AIzaSyDTREoB0u_S_Gm189HK5cDvSJ-z_U6oLKg',
+		authDomain: 'viewcachu-firebase.firebaseapp.com',
+		databaseURL: 'https://viewcachu-firebase.firebaseio.com',
+		projectId: 'viewcachu-firebase',
+		storageBucket: 'viewcachu-firebase.appspot.com',
+		messagingSenderId: '494938800865'
+	}
 };
