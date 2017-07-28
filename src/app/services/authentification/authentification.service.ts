@@ -7,12 +7,14 @@
 import { Router, CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';
 
+import { environment } from '../../../environments/environment';
+
 @Injectable()
 export class Authentification implements CanActivate {
 	constructor(private router: Router) { }
 
 	canActivate() {
-		if (1 + 1 === 3) { // do something
+		if (1 + 1 === 3 || environment.login) { // do something
 			return true;
 		}
 
