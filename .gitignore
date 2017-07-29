@@ -8,6 +8,7 @@
 # dependencies
 /node_modules
 /src/assets/animate.css
+/src/assets/font-awesome
 
 # IDEs and editors
 /.idea

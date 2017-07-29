@@ -9,6 +9,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "animate.css": "animate-css#^3.5.2"
+    "animate.css": "animate-css#^3.5.2",
+    "font-awesome": "fontawesome#^4.7.0"
   }
 }
