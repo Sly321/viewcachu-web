@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { Authentification } from './services/authentification/authentification.service';
 import { CookieService } from './services/cookie/cookie.service';
 import { SeriesapiService } from './services/seriesapi/seriesapi.service';
+import { FirebaseService } from './services/firebase/firebase.service';
 import { routes } from './app.routes';
 
 
@@ -39,7 +40,7 @@ import { SearchResultComponent } from './components/search-result/search-result.
 		HttpModule,
 		FormsModule
 	],
-	providers: [ Authentification, CookieService, SeriesapiService ],
+	providers: [ Authentification, CookieService, SeriesapiService, FirebaseService ],
 	bootstrap: [
 		ContentComponent
 	]
