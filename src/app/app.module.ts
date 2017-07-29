@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { Authentification } from './services/authentification/authentification.service';
+import { CookieService } from './services/cookie/cookie.service';
 import { routes } from './app.routes';
 
 
@@ -29,7 +30,7 @@ import { environment } from '../environments/environment';
 		AngularFireDatabaseModule,
 		AngularFireAuthModule
 	],
-	providers: [ Authentification ],
+	providers: [ Authentification, CookieService ],
 	bootstrap: [
 		ContentComponent
 	]
