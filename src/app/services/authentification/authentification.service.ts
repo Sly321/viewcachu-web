@@ -1,9 +1,3 @@
-/**
- * Class Authentification
- * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- * Sven Liebig				31.01.2017				Created
- */
-
 import { Router, CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { CookieService } from '../cookie/cookie.service';
@@ -13,28 +7,60 @@ import * as firebase from 'firebase/app';
 
 import { environment } from '../../../environments/environment';
 
+/**
+ *
+ * Implements Methods to login users and get their login state.
+ *
+ * @export
+ * @class Authentification
+ * @implements {CanActivate}
+ */
 @Injectable()
 export class Authentification implements CanActivate {
-	user: Observable<firebase.User>;
+	user: any;
 	isLoggedIn: boolean;
+	LOGIN_URL = '/login';
 
 	constructor(private router: Router, public afAuth: AngularFireAuth, private cs: CookieService) {
 		this.user = afAuth.authState;
+		const self = this;
 
 		firebase.auth().onAuthStateChanged(function(user) {
 			if (user) {
-				console.log(user);
-				this.user = user;
-				this.isLoggedIn = true;
-				cs.setCookie('usertoken', this.user.refreshToken);
+				self.user = user;
+				self.isLoggedIn = true;
+
+				const currentToken = cs.getCookie('usertoken');
+				if (currentToken) {
+					// Refresh Login
+					if (currentToken !== self.user.refreshToken) {
+						// Something is wrong
+						self.logout();
+					} else {
+						// User is Valid, refresh is token
+						cs.setCookie('usertoken', self.user.refreshToken);
+						if (router.url === self.LOGIN_URL) {
+							router.navigate(['/']);
+						}
+					}
+				} else {
+					// First login
+					cs.setCookie('usertoken', self.user.refreshToken);
+					router.navigate(['/']);
+				}
+
+				cs.setCookie('usertoken', self.user.refreshToken);
 			} else {
-				console.log('logged out');
-				this.user = null;
-				this.isLoggedIn = false;
+				self.user = null;
+				self.isLoggedIn = false;
 				cs.removeCookie('usertoken');
-				router.navigate(['/login']);
+				router.navigate([self.LOGIN_URL]);
 			}
 		});
+	}
+
+	getUser() {
+		return this.user;
 	}
 
 	canActivate() {
@@ -42,7 +68,7 @@ export class Authentification implements CanActivate {
 			return true;
 		}
 
-		this.router.navigate(['/login']);
+		this.router.navigate([this.LOGIN_URL]);
 		return false;
 	}
 
@@ -53,5 +79,7 @@ export class Authentification implements CanActivate {
 
 	logout() {
 		this.afAuth.auth.signOut();
+		this.cs.removeCookie('usertoken');
+		this.router.navigate([this.LOGIN_URL]);
 	}
 }

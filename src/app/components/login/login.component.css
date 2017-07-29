@@ -15,17 +15,7 @@
 	padding: 25px;
 }
 
-label, input {
-	float: center;
-	width: calc(100% - 30px);
-	text-align: left;
-}
-
-label {
-	padding: 5px 0;
-}
-
-input {
+button {
 	border: none;
 	background: #3D3D3D;
 	color: white;
@@ -35,8 +25,12 @@ input {
 	outline: none;
 	text-align: center;
 	transition: width 0.2s ease;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	width: calc(100% - 40px);
+	font-size: 16px;
 }
 
-input:focus {
+button:hover {
 	width: calc(100% - 10px);
 }

@@ -10,7 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { Authentification } from './services/authentification/authentification.service';
 
 export const routes = [
-	{ path: '',           redirectTo: 'login', pathMatch: 'full', canActivate: [Authentification], },
+	{ path: '',           redirectTo: 'home', pathMatch: 'full', canActivate: [Authentification], },
 	{ path: 'login',      component: LoginComponent },
 	{ path: 'home',       component: HomeComponent, canActivate: [Authentification] },
 	{ path: '**',         component: HomeComponent, canActivate: [Authentification] }
