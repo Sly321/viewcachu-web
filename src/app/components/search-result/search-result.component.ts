@@ -16,4 +16,9 @@ export class SearchResultComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	addSeriesToUser() {
+		// implement firebase service
+		// add series to user if user doenst have this series
+		console.log('not implemented yet');
+	}
 }
