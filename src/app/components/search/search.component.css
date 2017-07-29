@@ -24,10 +24,26 @@ input {
 }
 
 .search-result-wrapper {
-    width: 700px;
+	width: 700px;
+    max-width: 100%;
 	float: right;
+    max-height: 800px;
+    overflow: auto
 }
 
 .search-result-container {
     padding: 10px 0px;
+}
+
+.clear-input {
+	position: absolute;
+    right: 15px;
+    border: none;
+    top: 19px;
+    color: white;
+	background: none;
+	outline: none;
+	cursor: pointer;
+	opacity: 0;
+	transition: opacity 0.3s ease;
 }

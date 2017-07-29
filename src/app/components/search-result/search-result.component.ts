@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
-import { Serie } from '../../models/serie';
+import { SeriesInfoResponseByName } from '../../models/seriesInfoResponseByName';
 
 @Component({
 	selector: 'app-search-result',
@@ -8,13 +8,17 @@ import { Serie } from '../../models/serie';
 	styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent implements OnInit {
-	@Input() serie: Serie;
+	@Input() serie: SeriesInfoResponseByName;
 
 	constructor() {
 	}
 
 	ngOnInit() {
-		console.log(this.serie.poster_path);
 	}
 
+	addSeriesToUser() {
+		// implement firebase service
+		// add series to user if user doenst have this series
+		console.log('not implemented yet');
+	}
 }

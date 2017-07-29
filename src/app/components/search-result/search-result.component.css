@@ -1,16 +1,20 @@
 .series-wrapper {
-	overflow: auto;
+	overflow: hidden;
 	background: rgba(64, 64, 64, 0.7);
 	transition: background 0.5s ease;
 	cursor: pointer;
+	position: relative;
 }
 
 .series-wrapper:hover {
-	background: rgba(64, 64, 64, 0.9);
+	background: rgba(88, 88, 88, 0.9);
 }
 
 img {
 	float: left;
+	width: 300px;
+	height: 169px;
+	display: block;
 }
 
 .series-name, .series-air, .series-vote {
@@ -19,5 +23,37 @@ img {
 	padding: 5px;
     float: left;
 	width: calc(100% - 310px);
-	background-color: 
+}
+
+.actions {
+	color: white;
+    position: absolute;
+    right: 0;
+	bottom: 0;
+	padding: 5px 10px;
+}
+
+.actions span {
+	padding: 0px 5px;
+}
+
+.actions a {
+	color: white;
+	text-decoration: none;
+}
+
+@media(max-width: 768px) {
+	img {
+		float: left;
+		width: 150px;
+		height: 85px;
+	}
+
+	.series-name, .series-air, .series-vote {
+		color: white;
+		font-weight: bold;
+		padding: 5px;
+		float: left;
+		width: calc(100% - 160px);
+	}
 }
