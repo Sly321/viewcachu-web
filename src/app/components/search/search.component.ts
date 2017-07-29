@@ -17,6 +17,8 @@ export class SearchComponent implements OnInit {
 	private searchResultsArray: Array<SeriesInfoResponseByName>;
 
 	constructor(private auth: Authentification, private tvapi: SeriesapiService) {
+		this.searchString = '';
+
 		console.log(auth.getUser());
 
 		const self = this;
