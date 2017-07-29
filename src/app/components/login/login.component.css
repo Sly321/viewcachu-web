@@ -17,7 +17,7 @@
 
 label, input {
 	float: center;
-	width: calc(100% - 10px);
+	width: calc(100% - 30px);
 	text-align: left;
 }
 
@@ -34,4 +34,9 @@ input {
 	border-radius: 3px;
 	outline: none;
 	text-align: center;
+	transition: width 0.2s ease;
+}
+
+input:focus {
+	width: calc(100% - 10px);
 }
