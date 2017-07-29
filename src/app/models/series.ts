@@ -1,4 +1,4 @@
-export class Serie {
+export class Series {
 	/**
 	 * Image path.
 	 *
