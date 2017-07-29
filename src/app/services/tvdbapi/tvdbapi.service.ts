@@ -29,6 +29,7 @@ export class TvdbapiService {
 		this.headers = new Headers();
 		this.headers.append('Content-Type', 'application/json');
 		this.headers.append('Accept', 'application/json');
+		this.headers.append('Authorization', 'Bearer FDDE19A386F91E9D');
 		this.headers.append('Access-Control-Allow-Headers', 'Content-Type');
 		this.headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
 		this.headers.append('Access-Control-Allow-Origin', '*');
@@ -42,6 +43,10 @@ export class TvdbapiService {
 		const response = this.callApi(url, callback, false);
 
         // return series;
+	}
+
+	test2() {
+		this.callApi('https://api.thetvdb.com/search/series?name=The%20Walking', () => {}, null);
 	}
 
 	testWoW() {

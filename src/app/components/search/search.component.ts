@@ -21,9 +21,10 @@ export class SearchComponent implements OnInit {
 		this.searchStringObs.debounceTime(500).subscribe(
 			() => {
 				console.log(self.searchString);
-				tvapi.findSerieByName(self.searchString, (result) => {
+				tvapi.test2();
+				/* tvapi.findSerieByName(self.searchString, (result) => {
 					console.log(result);
-				});
+				}); */
 			}
 		);
 	}
