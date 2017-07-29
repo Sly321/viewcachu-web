@@ -11,6 +11,7 @@
 
 img {
 	float: left;
+	width: 300px;
 }
 
 .series-name, .series-air, .series-vote {
@@ -19,5 +20,19 @@ img {
 	padding: 5px;
     float: left;
 	width: calc(100% - 310px);
-	background-color: 
+}
+
+@media(max-width: 768px) {
+	img {
+		float: left;
+		width: 150px;
+	}
+
+	.series-name, .series-air, .series-vote {
+		color: white;
+		font-weight: bold;
+		padding: 5px;
+		float: left;
+		width: calc(100% - 160px);
+	}
 }

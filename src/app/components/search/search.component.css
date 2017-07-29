@@ -24,7 +24,8 @@ input {
 }
 
 .search-result-wrapper {
-    width: 700px;
+	width: 700px;
+    max-width: 100%;
 	float: right;
 }
 

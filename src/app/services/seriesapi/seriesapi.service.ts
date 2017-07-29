@@ -3,13 +3,19 @@ import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { Serie } from '../../models/serie';
+import { SeriesInfoResponseByName } from '../../models/seriesInfoResponseByName';
 import { environment } from '../../../environments/environment';
 
+/**
+ *
+ * Service for the API of themoviedb.org.
+ * Developers Guide https://developers.themoviedb.org/3
+ *
+ * @export
+ * @class SeriesapiService
+ */
 @Injectable()
 export class SeriesapiService {
-    /** Base Url der Grafiken. */
-	private BANNER_URL = 'http://thetvdb.com/banners/_cache/';
-
 	/** Url der API. */
 	private API_URL = 'https://api.themoviedb.org/3';
 
@@ -30,6 +36,21 @@ export class SeriesapiService {
 		this.headers.append('Accept', 'application/json');
 	}
 
+	getSeriesInfoById(id: number, callback: any) {
+
+	}
+
+	getSeriesSeasonsById(id: number, season: number, callback: any): void {
+		const url = `${this.API_URL}${this.BY_NAME}${environment.themoviedb}&query=${name}`;
+	}
+
+	/**
+	 * Calls the API and returns a {@link SeriesInfoResponseByName} Array to the callback.
+	 *
+	 * @param {string} name Name of the Series that are searched
+	 * @callback callback Calls this function after the api call with an Array of SeriesInfoResponseByName
+	 * @memberof SeriesapiService
+	 */
 	findSerieByName(name: string, callback: any): void {
 		const url = `${this.API_URL}${this.BY_NAME}${environment.themoviedb}&query=${name}`;
 		const response = this.callApi(url, callback, false);
@@ -37,26 +58,10 @@ export class SeriesapiService {
 
 	private callApi(url: string, callback: any, async: boolean) {
 		return this.http.get(url, { headers: this.headers })
-			.subscribe((data) => {
-				callback(data);
-			});
-			/* .toPromise()
-			.catch(this.handleError);
-			.then(res => {
-				return res;
-			}, res => {
-				console.log('req error');
-				return res;
-			})
-			.then(res => {
-				if(res.status == 200) {
-					var data = res.json();
-					callback(data);
-				} else {
-					console.log('404');
-					return res;
-				}
-			}); */
+			.subscribe((data: any) => {
+				callback(JSON.parse(data._body).results);
+			},
+			(e) => this.handleError(e));
 	}
 
 	private handleError(error: Response) {
