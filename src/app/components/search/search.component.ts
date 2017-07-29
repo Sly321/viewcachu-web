@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Authentification } from '../../services/authentification/authentification.service';
-import { TvdbapiService } from '../../services/tvdbapi/tvdbapi.service';
+import { SeriesapiService } from '../../services/seriesapi/seriesapi.service';
 import { Serie } from '../../models/serie';
 
 import { Subject } from 'rxjs/Subject';
@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
 	private searchStringObs: Subject<string> = new Subject<string>();
 	private searchResultsArray: Array<Serie>;
 
-	constructor(private auth: Authentification, private tvapi: TvdbapiService) {
+	constructor(private auth: Authentification, private tvapi: SeriesapiService) {
 		console.log(auth.getUser());
 
 		const self = this;

@@ -11,7 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 
 import { Authentification } from './services/authentification/authentification.service';
 import { CookieService } from './services/cookie/cookie.service';
-import { TvdbapiService } from './services/tvdbapi/tvdbapi.service';
+import { SeriesapiService } from './services/seriesapi/seriesapi.service';
 import { routes } from './app.routes';
 
 
@@ -37,7 +37,7 @@ import { SearchComponent } from './components/search/search.component';
 		HttpModule,
 		FormsModule
 	],
-	providers: [ Authentification, CookieService, TvdbapiService ],
+	providers: [ Authentification, CookieService, SeriesapiService ],
 	bootstrap: [
 		ContentComponent
 	]

@@ -7,7 +7,7 @@ import { Serie } from '../../models/serie';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
-export class TvdbapiService {
+export class SeriesapiService {
     /** Base Url der Grafiken. */
 	private BANNER_URL = 'http://thetvdb.com/banners/_cache/';
 
@@ -42,14 +42,6 @@ export class TvdbapiService {
 		const response = this.callApi(url, callback, false);
 
         // return series;
-	}
-
-	test2() {
-		this.callApi('https://api.themoviedb.org/3/search/movie?api_key=2e74839a423b1266f0ccf5043bade403&query=Jack+Reacher', () => {}, null);
-	}
-
-	testWoW() {
-		this.callApi('https://eu.api.battle.net/wow/guild/blackrock/rise%20again?fields=members&locale=de_DE&apikey=3x5xtsrj6apy9fawe7mvjqgmh3qdf5au', () => {}, false);
 	}
 
 	private callApi(url: string, callback: any, async: boolean) {
