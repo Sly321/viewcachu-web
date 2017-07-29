@@ -8,8 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-	"e2e": "ng e2e",
-	"postinstall": "cd src && node ../node_modules/bower/bin/bower install"
+    "e2e": "ng e2e",
+    "postinstall": "cd src && node ../node_modules/bower/bin/bower install"
   },
   "private": true,
   "dependencies": {

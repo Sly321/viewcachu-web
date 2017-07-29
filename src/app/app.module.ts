@@ -13,6 +13,7 @@ import { routes } from './app.routes';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { environment } from '../environments/environment';
 		BrowserModule,
 		RouterModule.forRoot(routes),
 		AngularFireModule.initializeApp(environment.firebase),
-		AngularFireDatabaseModule
+		AngularFireDatabaseModule,
+		AngularFireAuthModule
 	],
 	providers: [ Authentification ],
 	bootstrap: [

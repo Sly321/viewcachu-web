@@ -1,8 +1,12 @@
 <div class="login-wrapper">
 	<div class="login-container zoomIn animated">
 		<div class="login">
-			<label for="login-input">Login</label>
-			<input type="text" id="login-input" placeholder="Dein Name?">
+			<!-- <form (submit)="checkUsername($event, username.value)">
+				<label for="login-input">Login</label>
+				<input #username type="text" id="login-input" placeholder="Dein Name?">
+			</form> -->
+			<button (click)="login()">Login</button>
+			<button (click)="logout()">Logout</button>
 		</div>
 	</div>
 </div>
