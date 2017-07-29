@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
+import { BoardComponent } from './components/board/board.component';
 
 /** Services */
 import { Authentification } from './services/authentification/authentification.service';
@@ -26,7 +27,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 /** Additional */
 import { routes } from './app.routes';
 import { environment } from '../environments/environment';
-import { BoardComponent } from './components/src/app/components/board/board.component';
 
 @NgModule({
 	declarations: [
