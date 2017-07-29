@@ -3,6 +3,7 @@
 	background: rgba(64, 64, 64, 0.7);
 	transition: background 0.5s ease;
 	cursor: pointer;
+	position: relative;
 }
 
 .series-wrapper:hover {
@@ -22,6 +23,14 @@ img {
 	padding: 5px;
     float: left;
 	width: calc(100% - 310px);
+}
+
+.actions {
+	color: white;
+    position: absolute;
+    right: 0;
+	bottom: 0;
+	padding: 5px 10px;
 }
 
 @media(max-width: 768px) {
