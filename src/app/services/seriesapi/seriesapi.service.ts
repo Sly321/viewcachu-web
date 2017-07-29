@@ -3,7 +3,6 @@ import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { Serie } from '../../models/serie';
-
 import { environment } from '../../../environments/environment';
 
 @Injectable()
@@ -29,19 +28,11 @@ export class SeriesapiService {
 		this.headers = new Headers();
 		this.headers.append('Content-Type', 'application/json');
 		this.headers.append('Accept', 'application/json');
-		/* this.headers.append('Authorization', 'Bearer FDDE19A386F91E9D');
-		this.headers.append('Access-Control-Allow-Headers', 'Content-Type');
-		this.headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-		this.headers.append('Access-Control-Allow-Origin', '*'); */
 	}
 
 	findSerieByName(name: string, callback: any): void {
-		/* let url = `${API_URL}${enviroment.tvdbkey}/series/${id}/${LANGUAGE_KEY}`; */
 		const url = `${this.API_URL}${this.BY_NAME}${environment.themoviedb}&query=${name}`;
-
 		const response = this.callApi(url, callback, false);
-
-        // return series;
 	}
 
 	private callApi(url: string, callback: any, async: boolean) {

@@ -23,13 +23,11 @@ input {
 	width: 300px;
 }
 
-.search-result {
-	width: 300px;
+.search-result-wrapper {
+    width: 700px;
 	float: right;
-	background: white;
 }
 
-.search-result > span {
-	float: left;
-	width: 100%;
+.search-result-container {
+    padding: 10px 0px;
 }

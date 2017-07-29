@@ -1,0 +1,23 @@
+.series-wrapper {
+	overflow: auto;
+	background: rgba(64, 64, 64, 0.7);
+	transition: background 0.5s ease;
+	cursor: pointer;
+}
+
+.series-wrapper:hover {
+	background: rgba(64, 64, 64, 0.9);
+}
+
+img {
+	float: left;
+}
+
+.series-name, .series-air, .series-vote {
+	color: white;
+	font-weight: bold;
+	padding: 5px;
+    float: left;
+	width: calc(100% - 310px);
+	background-color: 
+}
