@@ -13,5 +13,6 @@ export const environment = {
 		projectId: 'viewcachu-firebase',
 		storageBucket: 'viewcachu-firebase.appspot.com',
 		messagingSenderId: '494938800865'
-	}
+	},
+	tvdbkey: 'FDDE19A386F91E9D'
 };
