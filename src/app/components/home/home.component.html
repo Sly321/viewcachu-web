@@ -1,9 +1,16 @@
-<p>
-	home works!
-</p>
+<nav>
+	<app-search *ngIf="auth.getUser() != null">
+		home works!
+	</app-search>
+</nav>
+
 <ul>
 	<li class="text" *ngFor="let item of items | async">
 		{{item.$value}}
 	</li>
 </ul>
 <button (click)="logout()">Logout</button>
+
+<div *ngIf="auth.getUser() != null">
+	{{ auth.getUser() }}
+</div>

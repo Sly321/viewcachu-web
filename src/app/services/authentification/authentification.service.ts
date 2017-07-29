@@ -22,7 +22,7 @@ export class Authentification implements CanActivate {
 	LOGIN_URL = '/login';
 
 	constructor(private router: Router, public afAuth: AngularFireAuth, private cs: CookieService) {
-		this.user = afAuth.authState;
+		this.user = null;
 		const self = this;
 
 		firebase.auth().onAuthStateChanged(function(user) {

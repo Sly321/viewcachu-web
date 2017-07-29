@@ -1,0 +1,12 @@
+<div class="search-wrapper">
+	<div class="search-container">
+		<div class="input-wrapper">
+			<input (ngModelChange)="searchStringChanged()" [(ngModel)]="searchString" type="text" class="search" placeholder="Suche">
+		</div>
+		<div class="search-result-wrapper">
+			<div class="search-result-container" *ngFor="let serie of searchResultsArray">
+				<app-search-result [serie]="serie"></app-search-result>
+			</div>
+		</div>
+	</div>
+</div>
