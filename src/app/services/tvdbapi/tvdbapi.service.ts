@@ -29,10 +29,10 @@ export class TvdbapiService {
 		this.headers = new Headers();
 		this.headers.append('Content-Type', 'application/json');
 		this.headers.append('Accept', 'application/json');
-		this.headers.append('Authorization', 'Bearer FDDE19A386F91E9D');
+		/* this.headers.append('Authorization', 'Bearer FDDE19A386F91E9D');
 		this.headers.append('Access-Control-Allow-Headers', 'Content-Type');
 		this.headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-		this.headers.append('Access-Control-Allow-Origin', '*');
+		this.headers.append('Access-Control-Allow-Origin', '*'); */
 	}
 
 	findSerieByName(name: string, callback: any): void {
