@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #141414;
+	background-image: url("assets/images/bright-squares.png");
+}
+
+/** Important Global CSS here */
+@font-face {
+    font-family: "avenir";
+    src: url("assets/fonts/Aaargh.ttf") format("truetype");
+}
+
+* {
+    font-family: "avenir";
+}

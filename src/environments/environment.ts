@@ -4,5 +4,14 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+	production: false,
+	login: true,
+	firebase: {
+		apiKey: 'AIzaSyDTREoB0u_S_Gm189HK5cDvSJ-z_U6oLKg',
+		authDomain: 'viewcachu-firebase.firebaseapp.com',
+		databaseURL: 'https://viewcachu-firebase.firebaseio.com',
+		projectId: 'viewcachu-firebase',
+		storageBucket: 'viewcachu-firebase.appspot.com',
+		messagingSenderId: '494938800865'
+	}
 };

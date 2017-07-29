@@ -1,0 +1,14 @@
+{
+  "name": "viewcachu-web",
+  "homepage": "https://github.com/Sly321/viewcachu-web",
+  "authors": [
+    "Sly321 <liebigsv@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "animate.css": "animate-css#^3.5.2"
+  }
+}
