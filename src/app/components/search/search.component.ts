@@ -42,4 +42,8 @@ export class SearchComponent implements OnInit {
 		this.searchStringObs.next(this.searchString);
 	}
 
+	clearInput() {
+		this.searchString = '';
+		this.searchStringObs.next(this.searchString);
+	}
 }

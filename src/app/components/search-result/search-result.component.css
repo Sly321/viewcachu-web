@@ -1,17 +1,19 @@
 .series-wrapper {
-	overflow: auto;
+	overflow: hidden;
 	background: rgba(64, 64, 64, 0.7);
 	transition: background 0.5s ease;
 	cursor: pointer;
 }
 
 .series-wrapper:hover {
-	background: rgba(64, 64, 64, 0.9);
+	background: rgba(88, 88, 88, 0.9);
 }
 
 img {
 	float: left;
 	width: 300px;
+	height: 169px;
+	display: block;
 }
 
 .series-name, .series-air, .series-vote {
@@ -26,6 +28,7 @@ img {
 	img {
 		float: left;
 		width: 150px;
+		height: 85px;
 	}
 
 	.series-name, .series-air, .series-vote {

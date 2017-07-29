@@ -2,6 +2,7 @@
 	<div class="search-container">
 		<div class="input-wrapper">
 			<input (ngModelChange)="searchStringChanged()" [(ngModel)]="searchString" type="text" class="search" placeholder="Suche">
+			<button (click)="clearInput()" class="clear-input">x</button>
 		</div>
 		<div class="search-result-wrapper">
 			<div class="search-result-container" *ngFor="let serie of searchResultsArray">
