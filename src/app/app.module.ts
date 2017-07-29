@@ -27,6 +27,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 /** Additional */
 import { routes } from './app.routes';
 import { environment } from '../environments/environment';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
 	declarations: [
@@ -35,7 +36,8 @@ import { environment } from '../environments/environment';
 		ContentComponent,
 		SearchComponent,
 		SearchResultComponent,
-		BoardComponent
+		BoardComponent,
+		UserComponent
 	],
 	imports: [
 		BrowserModule,
