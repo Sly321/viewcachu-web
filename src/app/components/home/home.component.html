@@ -14,6 +14,9 @@
 
 <button (click)="logout()">Logout</button>
 
-<div *ngIf="auth.getUser() != null">
-	{{ auth.getUser() }}
+<div class="loading-wrapper" *ngIf="auth.getUser() == null">
+	<div class="loading-container">
+		<span class="fa fa-cog fa-spin fa-4x fa-fw"></span>
+		<div class="quote">Der Winter naht..</div>
+	</div>
 </div>
