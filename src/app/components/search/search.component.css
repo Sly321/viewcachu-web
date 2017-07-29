@@ -1,5 +1,8 @@
 .search-wrapper {
-
+	overflow: auto;
+    min-height: 100px;
+    width: 70%;
+    float: left;
 }
 
 .search-container {
