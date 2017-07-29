@@ -1,0 +1,18 @@
+.search-wrapper {
+
+}
+
+.search-container {
+	padding: 15px;
+}
+
+input {
+	float: right;
+	padding: 5px;
+	background-color: #555555;
+	box-shadow: 0px 0px 10px 1px white;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	outline: none;
+}

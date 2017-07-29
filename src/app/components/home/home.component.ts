@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 	constructor(db: AngularFireDatabase, private auth: Authentification, private tvdb: TvdbapiService) {
 		this.items = db.list('/items');
 
-		tvdb.testWoW();
+		// tvdb.testWoW();
 	}
 
 	ngOnInit() {

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { ContentComponent } from './components/content/content.component';
 import { LoginComponent } from './components/login/login.component';
@@ -18,12 +19,14 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
 	declarations: [
 		LoginComponent,
 		HomeComponent,
-		ContentComponent
+		ContentComponent,
+		SearchComponent
 	],
 	imports: [
 		BrowserModule,
@@ -31,7 +34,8 @@ import { environment } from '../environments/environment';
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireDatabaseModule,
 		AngularFireAuthModule,
-		HttpModule
+		HttpModule,
+		FormsModule
 	],
 	providers: [ Authentification, CookieService, TvdbapiService ],
 	bootstrap: [

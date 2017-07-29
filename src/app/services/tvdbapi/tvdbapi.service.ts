@@ -34,12 +34,12 @@ export class TvdbapiService {
 		this.headers.append('Access-Control-Allow-Origin', '*');
 	}
 
-	findSerieByName(name: string): void {
+	findSerieByName(name: string, callback: any): void {
 		/* let url = `${API_URL}${enviroment.tvdbkey}/series/${id}/${LANGUAGE_KEY}`; */
 		const url = `${this.API_URL}${this.BY_NAME}${name}${this.LANG_PARAM}`;
 
 		console.log(url);
-		const response = this.callApi(url, () => {}, false);
+		const response = this.callApi(url, callback, false);
 
         // return series;
 	}
@@ -51,7 +51,7 @@ export class TvdbapiService {
 	private callApi(url: string, callback: any, async: boolean) {
 		return this.http.get(url, { headers: this.headers })
 			.subscribe((data) => {
-				console.log(data);
+				callback(data);
 			});
 			/* .toPromise()
 			.catch(this.handleError);
