@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Authentification } from '../../services/authentification/authentification.service';
 import { TvdbapiService } from '../../services/tvdbapi/tvdbapi.service';
+import { Serie } from '../../models/serie';
 
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
@@ -13,6 +14,7 @@ import 'rxjs/add/operator/debounceTime';
 export class SearchComponent implements OnInit {
 	private searchString: string;
 	private searchStringObs: Subject<string> = new Subject<string>();
+	private searchResultsArray: Array<Serie>;
 
 	constructor(private auth: Authentification, private tvapi: TvdbapiService) {
 		console.log(auth.getUser());
@@ -20,12 +22,16 @@ export class SearchComponent implements OnInit {
 		const self = this;
 		this.searchStringObs.debounceTime(500).subscribe(
 			() => {
-				console.log(self.searchString);
-				tvapi.testWoW();
-				// tvapi.test2();
-				/* tvapi.findSerieByName(self.searchString, (result) => {
+				if (self.searchString === '') {
+					self.searchResultsArray = [];
+					return;
+				}
+				tvapi.findSerieByName(self.searchString, (result) => {
 					console.log(result);
-				}); */
+					console.log(result._body);
+					const results: Array<Serie> = JSON.parse(result._body).results;
+					self.searchResultsArray = results;
+				});
 			}
 		);
 	}

@@ -6,6 +6,11 @@
 	padding: 15px;
 }
 
+.input-wrapper {
+	width: 100%;
+	float: right;
+}
+
 input {
 	float: right;
 	padding: 5px;
@@ -15,4 +20,16 @@ input {
 	border-radius: 5px;
 	color: white;
 	outline: none;
+	width: 300px;
+}
+
+.search-result {
+	width: 300px;
+	float: right;
+	background: white;
+}
+
+.search-result > span {
+	float: left;
+	width: 100%;
 }

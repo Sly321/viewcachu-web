@@ -14,5 +14,5 @@ export const environment = {
 		storageBucket: 'viewcachu-firebase.appspot.com',
 		messagingSenderId: '494938800865'
 	},
-	tvdbkey: 'FDDE19A386F91E9D'
+	themoviedb: '?api_key=2e74839a423b1266f0ccf5043bade403'
 };

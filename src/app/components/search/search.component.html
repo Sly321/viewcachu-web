@@ -1,5 +1,12 @@
 <div class="search-wrapper">
 	<div class="search-container">
-		<input (ngModelChange)="searchStringChanged()" [(ngModel)]="searchString" type="text" class="search" placeholder="Suche">
+		<div class="input-wrapper">
+			<input (ngModelChange)="searchStringChanged()" [(ngModel)]="searchString" type="text" class="search" placeholder="Suche">
+		</div>
+		<div class="search-result">
+			<span *ngFor="let serie of searchResultsArray">
+				{{ serie.name }}
+			</span>
+		</div>
 	</div>
 </div>

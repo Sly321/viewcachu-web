@@ -12,10 +12,10 @@ export class TvdbapiService {
 	private BANNER_URL = 'http://thetvdb.com/banners/_cache/';
 
 	/** Url der API. */
-	private API_URL = 'http://thetvdb.com/api/';
+	private API_URL = 'https://api.themoviedb.org/3';
 
     /** Key um Serien anhand des Namens zu suchen. */
-	private BY_NAME = 'GetSeries.php?seriesname=';
+	private BY_NAME = '/search/tv';
 
     /** Setzt die Ausgabesprache der API, default: Deutsch */
 	private LANG_KEY = 'de.xml';
@@ -37,16 +37,15 @@ export class TvdbapiService {
 
 	findSerieByName(name: string, callback: any): void {
 		/* let url = `${API_URL}${enviroment.tvdbkey}/series/${id}/${LANGUAGE_KEY}`; */
-		const url = `${this.API_URL}${this.BY_NAME}${name}${this.LANG_PARAM}`;
+		const url = `${this.API_URL}${this.BY_NAME}${environment.themoviedb}&query=${name}`;
 
-		console.log(url);
 		const response = this.callApi(url, callback, false);
 
         // return series;
 	}
 
 	test2() {
-		this.callApi('https://api.thetvdb.com/search/series?name=The%20Walking', () => {}, null);
+		this.callApi('https://api.themoviedb.org/3/search/movie?api_key=2e74839a423b1266f0ccf5043bade403&query=Jack+Reacher', () => {}, null);
 	}
 
 	testWoW() {
