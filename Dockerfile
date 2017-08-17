@@ -15,10 +15,10 @@ WORKDIR /usr/src/app/src
 RUN bower install --allow-root
 
 # Back to app base dir
-WORKDIR /usr/src/app/src
+WORKDIR /usr/src/app
 
 # Run Tests
-CMD ["npm", "test"]
+RUN npm test
 
 # Open port 4200. This is the port that our development server uses
 EXPOSE 4200
