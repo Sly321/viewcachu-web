@@ -43,4 +43,23 @@ export class FirebaseService {
 			return false;
 		}
 	}
+
+	remove(nodeString: string) {
+		const node = this.db.list(nodeString);
+		node.remove();
+	}
+
+	get(nodeString: string): Array<any> {
+		const node = this.db.list(nodeString);
+		const result = [];
+		node.forEach((element: Array<any>) => {
+			result.push(element);
+		});
+		return result;
+	}
+
+	write(value: any, nodeString: string) {
+		const node = this.db.list(nodeString);
+		node.push(value);
+	}
 }
