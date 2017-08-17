@@ -10,6 +10,16 @@ export class FirebaseService {
 	constructor(private db: AngularFireDatabase, private auth: Authentification) {
 	}
 
+	/**
+	 * Adds a Series to the Database.
+	 *
+	 * @param {Series} series Series Object
+	 * @memberof FirebaseService
+	 */
+	addSeries(series: Series) {
+		console.log('not implemented yet');
+	}
+
 	addSeriesToUser(series: Series) {
 		console.log('not implemented yet');
 	}
