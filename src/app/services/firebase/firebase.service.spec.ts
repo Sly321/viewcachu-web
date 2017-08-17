@@ -29,14 +29,12 @@ describe('FirebaseService', () => {
 	it('should be empty', inject([FirebaseService], (service: FirebaseService) => {
 		service.remove('/');
 		const data = service.get('/');
-		console.log(data[0]);
 		expect(data[0].length).toBe(0);
 	}));
 
 	it('should not be empty', inject([FirebaseService], (service: FirebaseService) => {
 		service.write({ 'someKey': 'someValue' }, '/node');
 		const data = service.get('/node');
-		console.log(data);
 		expect(data.length).toBe(1);
 	}));
 });
