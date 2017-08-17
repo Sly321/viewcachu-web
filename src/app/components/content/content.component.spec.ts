@@ -7,12 +7,12 @@ import { ContentComponent } from './content.component';
 	selector: 'router-outlet',
 	template: '<h1>mockingjay</h1>'
 })
-class RouterMock { }
+class MockRouterComponent { }
 
 class MockRouter { public navigate() { } }
 export const routes = [
-	{ path: '', component: RouterMock },
-	{ path: '**', component: RouterMock },
+	{ path: '', component: MockRouterComponent },
+	{ path: '**', component: MockRouterComponent },
 ];
 
 describe('ContentComponent', () => {
@@ -21,7 +21,7 @@ describe('ContentComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [ ContentComponent, RouterMock ]
+			declarations: [ ContentComponent, MockRouterComponent ]
 		})
 		.compileComponents();
 	}));
