@@ -1,4 +1,7 @@
 [![Build Status](https://travis-ci.org/Sly321/viewcachu-web.svg?branch=master)](https://travis-ci.org/Sly321/viewcachu-web)
+[![Code Climate](https://codeclimate.com/github/Sly321/viewcachu-web/badges/gpa.svg)](https://codeclimate.com/github/Sly321/viewcachu-web)
+[![Test Coverage](https://codeclimate.com/github/Sly321/viewcachu-web/badges/coverage.svg)](https://codeclimate.com/github/Sly321/viewcachu-web/coverage)
+[![Issue Count](https://codeclimate.com/github/Sly321/viewcachu-web/badges/issue_count.svg)](https://codeclimate.com/github/Sly321/viewcachu-web)
 
 # Viewcachu
 
