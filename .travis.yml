@@ -5,6 +5,7 @@ services:
 
 before_install:
 - docker build -t viewcachu/web:1.0 .
+- docker run -d --name viewcachu-web-container viewcachu/web:1.0
 
 script:
-- docker run --name viewcachu-web-container viewcachu/web:1.0
+- docker ps -a
