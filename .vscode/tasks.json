@@ -4,8 +4,9 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "npm",
-			"script": "start",
+            "taskName": "build docker file",
+            "type": "shell",
+            "command": "docker build -t viewcachu-web ${workspaceRoot}",
 			"group": {
 				"kind": "build",
 				"isDefault": true
