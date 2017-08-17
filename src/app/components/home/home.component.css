@@ -1,0 +1,32 @@
+.board-wrapper {
+	float: left;
+	padding: 15px;
+}
+
+.loading-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.50);
+}
+
+.loading-container {
+	top: calc(50% - 50px);
+    left: calc(50% - 100px);
+    position: absolute;
+    text-align: center;
+    width: 200px;
+}
+
+.loading-container .fa-spin {
+	color: white;
+	float: left;
+	width: 100%;
+}
+
+.loading-container .quote {
+	font-weight: bold;
+    color: white;
+}

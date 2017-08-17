@@ -1,16 +1,22 @@
 <nav>
+	<app-user *ngIf="auth.getUser() != null"> 
+
+	</app-user>
+
 	<app-search *ngIf="auth.getUser() != null">
 		home works!
 	</app-search>
 </nav>
 
-<ul>
-	<li class="text" *ngFor="let item of items | async">
-		{{item.$value}}
-	</li>
-</ul>
+<div class="board-wrapper">
+	<app-board *ngIf="auth.getUser() != null"></app-board>
+</div>
+
 <button (click)="logout()">Logout</button>
 
-<div *ngIf="auth.getUser() != null">
-	{{ auth.getUser() }}
+<div class="loading-wrapper" *ngIf="auth.getUser() == null">
+	<div class="loading-container">
+		<span class="fa fa-cog fa-spin fa-4x fa-fw"></span>
+		<div class="quote">Der Winter naht..</div>
+	</div>
 </div>

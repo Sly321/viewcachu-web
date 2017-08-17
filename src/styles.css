@@ -5,6 +5,7 @@ html, body {
 	height: 100%;
 	background-color: #141414;
 	background-image: url("assets/images/bright-squares.png");
+    min-width: 1000px;
 }
 
 /** Important Global CSS here */
