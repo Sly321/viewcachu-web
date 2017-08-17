@@ -12,8 +12,6 @@
 	<app-board *ngIf="auth.getUser() != null"></app-board>
 </div>
 
-<button (click)="logout()">Logout</button>
-
 <div class="loading-wrapper" *ngIf="auth.getUser() == null">
 	<div class="loading-container">
 		<span class="fa fa-cog fa-spin fa-4x fa-fw"></span>
