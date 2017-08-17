@@ -5,14 +5,13 @@
 
 export const environment = {
 	production: false,
-	login: true,
 	firebase: {
-		apiKey: 'AIzaSyDTREoB0u_S_Gm189HK5cDvSJ-z_U6oLKg',
-		authDomain: 'viewcachu-firebase.firebaseapp.com',
-		databaseURL: 'https://viewcachu-firebase.firebaseio.com',
-		projectId: 'viewcachu-firebase',
-		storageBucket: 'viewcachu-firebase.appspot.com',
-		messagingSenderId: '494938800865'
+		apiKey: 'AIzaSyBIdEMoGyVhG7vEuFONf43h9K4lJvqbjg8',
+		authDomain: 'viewcachu-firebase-mock.firebaseapp.com',
+		databaseURL: 'https://viewcachu-firebase-mock.firebaseio.com',
+		projectId: 'viewcachu-firebase-mock',
+		storageBucket: 'viewcachu-firebase-mock.appspot.com',
+		messagingSenderId: '506827361279'
 	},
 	themoviedb: '?api_key=2e74839a423b1266f0ccf5043bade403'
 };
