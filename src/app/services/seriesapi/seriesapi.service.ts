@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { Serie } from '../../models/serie';
+import { Series } from '../../models/series';
 import { SeriesInfoResponseByName } from '../../models/seriesInfoResponseByName';
 import { environment } from '../../../environments/environment';
 
