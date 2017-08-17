@@ -18,6 +18,7 @@ RUN bower install --allow-root
 WORKDIR /usr/src/app/src
 
 # Run Tests
+CMD ["npm", "test"]
 
 # Open port 4200. This is the port that our development server uses
 EXPOSE 4200
