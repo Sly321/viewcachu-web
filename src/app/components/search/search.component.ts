@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Authentification } from '../../services/authentification/authentification.service';
 import { SeriesapiService } from '../../services/seriesapi/seriesapi.service';
 import { SeriesInfoResponseByName } from '../../models/seriesInfoResponseByName';
 
@@ -16,10 +15,8 @@ export class SearchComponent implements OnInit {
 	private searchStringObs: Subject<string> = new Subject<string>();
 	private searchResultsArray: Array<SeriesInfoResponseByName>;
 
-	constructor(private auth: Authentification, private tvapi: SeriesapiService) {
+	constructor(private tvapi: SeriesapiService) {
 		this.searchString = '';
-
-		console.log(auth.getUser());
 
 		const self = this;
 		this.searchStringObs.debounceTime(500).subscribe(
