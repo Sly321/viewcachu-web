@@ -30,11 +30,11 @@ export class FirebaseService {
 
 	hasUserDb(): boolean {
 		const uid: string = this.auth.getUser().uid;
-		console.log(`uid: ${uid}`);
 		if (uid) {
-			const db = this.db.list('/' + uid);
-			console.log(`uid: ${db}`);
-			if (db) {
+			const db = this.get('/' + uid);
+			console.log(db);
+			console.log(`db.length ${db.length}`);
+			if (db[0].length !== 0) {
 				return true;
 			} else {
 				return false;
@@ -42,6 +42,11 @@ export class FirebaseService {
 		} else {
 			return false;
 		}
+	}
+
+	createUserDb(): void {
+		const id = this.auth.getUser().uid;
+		this.write({ id: 't' }, '/users/');
 	}
 
 	remove(nodeString: string) {
@@ -59,7 +64,7 @@ export class FirebaseService {
 	}
 
 	write(value: any, nodeString: string) {
-		const node = this.db.list(nodeString);
-		node.push(value);
+		const node = this.db.list('/');
+		node.update(nodeString, value);
 	}
 }

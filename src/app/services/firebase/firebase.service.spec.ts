@@ -37,4 +37,13 @@ describe('FirebaseService', () => {
 		const data = service.get('/node');
 		expect(data.length).toBe(1);
 	}));
+
+	it('should not have user database', inject([FirebaseService], (service: FirebaseService) => {
+		const result = service.hasUserDb();
+		expect(result).toBe(false);
+	}));
+	
+	it('should create user database', inject([FirebaseService], (service: FirebaseService) => {
+		const result = service.createUserDb();
+	}));
 });
