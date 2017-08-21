@@ -25,7 +25,7 @@ export class Authentification implements CanActivate {
 		this.user = null;
 		const self = this;
 
-		firebase.auth().onAuthStateChanged(function(user) {
+		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
 				self.user = user;
 				self.isLoggedIn = true;

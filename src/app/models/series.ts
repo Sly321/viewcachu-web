@@ -18,10 +18,10 @@ export class Series {
 	/**
 	 * Genre IDs of this series.
 	 *
-	 * @type {Array<Number>}
+	 * @type {Array<number>}
 	 * @memberof Serie
 	 */
-	genre_ids: Array<Number>;
+	genre_ids: Array<number>;
 
 	id: number;
 	name: string;

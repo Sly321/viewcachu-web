@@ -24,10 +24,10 @@ export class SeriesInfoResponseByName {
 	/**
 	 * Genre IDs of this series.
 	 *
-	 * @type {Array<Number>}
+	 * @type {Array<number>}
 	 * @memberof SeriesInfoResponseByName
 	 */
-	genre_ids: Array<Number>;
+	genre_ids: Array<number>;
 
 	/**
 	 * ID of the series.
