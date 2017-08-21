@@ -1,14 +1,14 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed  } from '@angular/core/testing';
 
 import { FirebaseService } from './firebase.service';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../../../environments/environment';
 
-import { AuthentificationMock } from '../authentification/authentification.service.mock';
 import { Authentification } from '../authentification/authentification.service';
+import { AuthentificationMock } from '../authentification/authentification.service.mock';
 
 class AngularFireDatabaseModuleMock {
 }

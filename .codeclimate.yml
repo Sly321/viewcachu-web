@@ -1,0 +1,19 @@
+engines:
+  tslint:
+    enabled: true
+    channel: beta
+    config: tslint-cl.json
+  fixme:
+    enabled: true
+ratings:
+  paths:
+    - "src/app/**.ts"
+    - "src/app/**.css"
+    - "src/styles.css"
+    - "src/enviroments/*"
+exclude_paths:
+  - bin
+  - node_modules
+  - typings
+  - coverage
+  - dist
