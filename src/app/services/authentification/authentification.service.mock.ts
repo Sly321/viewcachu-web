@@ -1,12 +1,12 @@
 export class AuthentificationMock {
-	uid: number;
+	uid: string;
 
 	constructor() {
-		this.uid = 1234;
+		this.uid = (Math.random() * 1000).toString().replace(".", "");
 	}
 
 	getUser() {
-		return { uid: this.uid };
+		return { uid: this.uid, displayName: "display name", email: "e@mail.com" };
 	}
 
 	canActivate() {
@@ -16,9 +16,5 @@ export class AuthentificationMock {
 	}
 
 	logout() {
-	}
-
-	setUid(val: number) {
-		this.uid = val;
 	}
 }

@@ -34,3 +34,11 @@ export class Series {
 	vote_average: number;
 	vote_counter: number;
 }
+
+export class Season {
+
+}
+
+export class Episode {
+	
+}
