@@ -118,13 +118,13 @@ export class SeriesapiService {
 						const season: Season = new Season(seasonName, totalEpisodes, seasonNumber);
 
 						seasonData.episodes.forEach(episode => {
-							season.episodes.push(new Episode(episode.name, episode.overview, episode.air_date));
+							season.$episodes.push(new Episode(episode.name, episode.overview, episode.air_date));
 						});
 						series.$seasons.push(season);
 
 						if (seasonNumber === lastSeason) {
 							series.$seasons.sort((a, b) => {
-								return a.seasonNumber - b.seasonNumber;
+								return a.$seasonNumber - b.$seasonNumber;
 							});
 							callback(series);
 						}

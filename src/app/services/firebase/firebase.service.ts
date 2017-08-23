@@ -35,7 +35,7 @@ export class FirebaseService {
 	 * Calls the database and checks if the series is present.
 	 * 
 	 * @param seriesId ID of the series.
-	  * @param {any} [callback=(val: boolean) => {}] Called with a boolean, true if series is in the database, false if not.
+	 * @param {any} [callback=(val: boolean) => {}] Called with a boolean, true if series is in the database, false if not.
 	 * @memberof FirebaseService
 	 */
 	isSeriesInDatabase(seriesId: number, callback = (val: boolean) => {}): void {

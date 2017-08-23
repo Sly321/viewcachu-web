@@ -106,29 +106,123 @@ export class Series {
 	}
 }
 
+/**
+ * Represents a series season.
+ * 
+ * @export
+ * @class Season
+ */
 export class Season {
-	episodes: Array<Episode>;
-	episodeAmout: number;
-	seasonNumber: number;
-	name: string;
-	overview: string;
+	private name: string;
+	private overview: string;
+	private seasonNumber: number;
+	private episodes: Array<Episode>;
+	private episodeAmout: number;
 
-	constructor(name: string, episodeAmout: number, seasonNumber) {
+	/**
+	 * Creates an instance of Season.
+	 * 
+	 * @param {string} [name=''] Name of the season.
+	 * @param {string} [overview=''] Description of this season.
+	 * @param {number} [seasonNumber=0] Number of this season.
+	 * @param {any} [episodes=new Array<Episode>()] Array of episodes that are in this season.
+	 * @param {number} [episodeAmout=0] Number of total episodes of this season.
+	 * @memberof Season
+	 */
+	constructor(name = '', overview = '', seasonNumber = 0, episodes = new Array<Episode>(), episodeAmout = 0) {
 		this.name = name;
-		this.episodeAmout = episodeAmout;
+		this.overview = overview;
 		this.seasonNumber = seasonNumber;
-		this.episodes = new Array<Episode>();
+		this.episodes = episodes;
+		this.episodeAmout = episodeAmout;
+	}
+
+	public get $name(): string {
+		return this.name;
+	}
+
+	public set $name(value: string) {
+		this.name = value;
+	}
+
+	public get $overview(): string {
+		return this.overview;
+	}
+
+	public set $overview(value: string) {
+		this.overview = value;
+	}
+
+	public get $seasonNumber(): number {
+		return this.seasonNumber;
+	}
+
+	public set $seasonNumber(value: number) {
+		this.seasonNumber = value;
+	}
+
+	public get $episodes(): Array<Episode> {
+		return this.episodes;
+	}
+
+	public set $episodes(value: Array<Episode>) {
+		this.episodes = value;
+	}
+
+	public get $episodeAmout(): number {
+		return this.episodeAmout;
+	}
+
+	public set $episodeAmout(value: number) {
+		this.episodeAmout = value;
 	}
 }
 
+/**
+ * Represents an episode of a series.
+ * 
+ * @export
+ * @class Episode
+ */
 export class Episode {
-	name: string;
-	overview: string;
-	airDate: Date;
+	private name: string;
+	private overview: string;
+	private airDate: Date;
 
-	constructor(name: string, overview: string, airdate: string) {
+	/**
+	 * Creates an instance of Episode.
+	 * @param {string} [name=''] Name of this episode.
+	 * @param {string} [overview=''] Description of this episode.
+	 * @param {string} [airdate=''] Air date of this episode.
+	 * @memberof Episode
+	 */
+	constructor(name = '', overview = '', airdate = '') {
 		this.name = name;
 		this.overview = overview;
 		this.airDate = new Date(airdate);
+	}
+
+	public get $name(): string {
+		return this.name;
+	}
+
+	public set $name(value: string) {
+		this.name = value;
+	}
+
+	public get $overview(): string {
+		return this.overview;
+	}
+
+	public set $overview(value: string) {
+		this.overview = value;
+	}
+
+	public get $airDate(): Date {
+		return this.airDate;
+	}
+
+	public set $airDate(value: Date) {
+		this.airDate = value;
 	}
 }
