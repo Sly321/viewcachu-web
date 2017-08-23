@@ -2,6 +2,7 @@
 [![Code Climate](https://codeclimate.com/github/Sly321/viewcachu-web/badges/gpa.svg)](https://codeclimate.com/github/Sly321/viewcachu-web)
 [![Test Coverage](https://codeclimate.com/github/Sly321/viewcachu-web/badges/coverage.svg)](https://codeclimate.com/github/Sly321/viewcachu-web/coverage)
 [![Issue Count](https://codeclimate.com/github/Sly321/viewcachu-web/badges/issue_count.svg)](https://codeclimate.com/github/Sly321/viewcachu-web)
+[![Dependencies](https://www.versioneye.com/user/projects/599df336368b080052a6a913/badge.svg)](https://www.versioneye.com/user/projects/599df336368b080052a6a913?child=summary)
 
 # Viewcachu
 
