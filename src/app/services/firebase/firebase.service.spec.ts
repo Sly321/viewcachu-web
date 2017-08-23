@@ -40,7 +40,7 @@ describe('FirebaseService', () => {
 	}));
 
 	it('should not be empty', inject([FirebaseService], (service: FirebaseService) => {
-		service.write({ 'someKey': 'someValue' }, '/node');
+		service.write({ someKey: 'someValue' }, '/node');
 		const data = service.get('/node');
 		expect(data.length).toBe(1);
 	}));
