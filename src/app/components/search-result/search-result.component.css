@@ -6,6 +6,17 @@
 	position: relative;
 }
 
+.series-wrapper-overlay {
+	background: rgba(220, 220, 220, 0.70);
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 100;
+	cursor: wait;
+}
+
 .series-wrapper:hover {
 	background: rgba(88, 88, 88, 0.9);
 }

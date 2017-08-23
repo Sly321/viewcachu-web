@@ -23,6 +23,7 @@ export class Series {
 	seasons: Array<Season>;
 
 	constructor(id: number = 0, name: string = '', overview: string = '', airDate: string = '') {
+		this.id = id;
 		this.name = name;
 		this.overview = overview;
 		this.airDate = new Date(airDate);

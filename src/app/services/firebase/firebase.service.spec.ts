@@ -78,7 +78,7 @@ describe('FirebaseService', () => {
 		series.name = 'name';
 		series.id = 4458471;
 		service.addSeries(series);
-		const result = service.isSeriesInDatabase(series);
+		const result = service.isSeriesInDatabase(series.id);
 		expect(result).toBe(true);
 	}));
 });

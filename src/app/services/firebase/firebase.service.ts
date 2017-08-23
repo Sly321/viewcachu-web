@@ -26,37 +26,48 @@ export class FirebaseService {
 	 * @param {Series} series
 	 * @memberof FirebaseService
 	 */
-	addSeriesToUser(series: Series): void {
+	addSeriesToUser(series: Series, callback = () => {}): void {
 		const uid = this.auth.getUser().uid;
-		this.write(series, `/users/${uid}/series/${series.id}`);
+		this.write(series, `/users/${uid}/series/${series.id}`, callback);
 	}
 
 	/**
 	 * Returns true if the series is in the database at /series entry.
 	 *
-	 * @param {Series} series
+	 * @param {number} seriesId
 	 * @returns {boolean}
 	 * @memberof FirebaseService
 	 */
-	isSeriesInDatabase(series: Series): boolean {
-		const entry = this.get(`/series/${series.id}`);
-		if (entry.length === 0) {
+	isSeriesInDatabase(seriesId: number): boolean {
+		const entry = this.get(`/series/${seriesId}`);
+		console.log(entry);
+		if (entry === undefined || entry.length === 0) {
 			return false;
 		}
 		return true;
 	}
 
+	testIsSeriesInDatabase(seriesId: number, callback: any): void {
+		const entry = this.testget(`/series/${seriesId}`, (value: any) => {
+			if (value.length === 0) {
+				callback(false);
+			} else {
+				callback(true);
+			}
+		});
+	}
+
 	/**
 	 * Returns true if the series is in the database at /users/${userid}/series entry.
 	 *
-	 * @param {Series} series
+	 * @param {number} seriesId
 	 * @returns {boolean}
 	 * @memberof FirebaseService
 	 */
-	isSeriesInUserDatabase(series: Series): boolean {
+	isSeriesInUserDatabase(seriesId: number): boolean {
 		const uid = this.auth.getUser().uid;
-		const entry = this.get(`/users/${uid}/series/${series.id}`);
-		if (entry.length === 0) {
+		const entry = this.get(`/users/${uid}/series/${seriesId}`);
+		if (entry === undefined || entry.length === 0) {
 			return false;
 		}
 		return true;
@@ -156,7 +167,15 @@ export class FirebaseService {
 		node.forEach((element: Array<any>) => {
 			result.push(element);
 		});
+		console.log(result);
+		console.log(result[0]);
 		return result[0];
+	}
+
+	testget(nodeString: string, callback: any): void {
+		const node = this.db.list(nodeString).subscribe((v: any) => {
+			callback(v);
+		});
 	}
 
 	/**
@@ -166,8 +185,8 @@ export class FirebaseService {
 	 * @param {string} nodeString 
 	 * @memberof FirebaseService
 	 */
-	write(value: any, nodeString: string) {
+	write(value: any, nodeString: string, callback = () => {}) {
 		const node = this.db.list('/');
-		node.update(nodeString, value);
+		node.update(nodeString, value).then(callback);
 	}
 }
