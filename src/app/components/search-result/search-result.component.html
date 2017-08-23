@@ -1,10 +1,11 @@
 <div class="series-wrapper">
-	<img src="https://image.tmdb.org/t/p/w300/{{serie.backdrop_path}}" />
+	<img src="https://image.tmdb.org/t/p/w300{{serie.backdrop_path}}" />
 	<div class="series-name">{{ serie.name }}</div>
 	<div class="series-air">{{ serie.first_air_date }}</div>
 	<div class="series-vote">{{ serie.vote_average }}</div>
 	<div class="actions">
-		<span (click)="addSeriesToUser()" class="fa fa-2x fa-plus"></span>
+		<span (click)="addSeriesToUser()" class="fa fa-2x fa-plus" [style.display]="(isAdded === null ? 'none' : (isAdded ? 'none' : 'inline-block'))"></span>
+		<span (click)="removeSeriesFromUser()" class="fa fa-2x fa-trash" [style.display]="(isAdded ? 'inline-block' : 'none')"></span>
 		<a href="https://google.de/search?q={{serie.name}}" target="_blank">
 			<span class="fa fa-2x fa-google"></span>
 		</a>
@@ -12,4 +13,5 @@
 			<span class="fa fa-2x fa-youtube"></span>
 		</a>
 	</div>
+	<div class="series-wrapper-overlay" [style.display]="(disabled ? 'block' : 'none')"></div>
 </div>  
