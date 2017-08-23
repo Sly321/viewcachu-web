@@ -44,7 +44,7 @@ describe('FirebaseService', () => {
 		const result = service.hasUserDb();
 		expect(result).toBe(false);
 	}));
-	
+
 	it('should create user database', inject([FirebaseService], (service: FirebaseService) => {
 		service.createUserDb();
 		const result = service.hasUserDb();
@@ -53,10 +53,10 @@ describe('FirebaseService', () => {
 
 	it('should add 2 series to user', inject([FirebaseService], (service: FirebaseService) => {
 		const series = new Series();
-		series.name = "name";
+		series.name = 'name';
 		series.id = 1231235123;
 		const series2 = new Series();
-		series2.name = "name";
+		series2.name = 'name';
 		series2.id = 51231245123;
 		service.addSeriesToUser(series);
 		service.addSeriesToUser(series2);
@@ -66,16 +66,16 @@ describe('FirebaseService', () => {
 
 	it('should add series to series database', inject([FirebaseService], (service: FirebaseService) => {
 		const series = new Series();
-		series.name = "name";
+		series.name = 'name';
 		series.id = 1231235123;
 		service.addSeries(series);
 		const result = service.getSeries();
 		expect(result.length).toBe(1);
 	}));
-	
+
 	it('should have series entry in the database after adding it', inject([FirebaseService], (service: FirebaseService) => {
 		const series = new Series();
-		series.name = "name";
+		series.name = 'name';
 		series.id = 4458471;
 		service.addSeries(series);
 		const result = service.isSeriesInDatabase(series);

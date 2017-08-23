@@ -16,31 +16,31 @@ export class FirebaseService {
 	 * @param {Series} series Series Object
 	 * @memberof FirebaseService
 	 */
-	addSeries(series: Series):void {
+	addSeries(series: Series): void {
 		this.write(series, `/series/${series.id}`);
 	}
 
 	/**
 	 * Adds a series to the user database /users/${userid}/series.
-	 * 
-	 * @param {Series} series 
+	 *
+	 * @param {Series} series
 	 * @memberof FirebaseService
 	 */
-	addSeriesToUser(series: Series):void {
+	addSeriesToUser(series: Series): void {
 		const uid = this.auth.getUser().uid;
 		this.write(series, `/users/${uid}/series/${series.id}`);
 	}
 
 	/**
 	 * Returns true if the series is in the database at /series entry.
-	 * 
-	 * @param {Series} series 
-	 * @returns {boolean} 
+	 *
+	 * @param {Series} series
+	 * @returns {boolean}
 	 * @memberof FirebaseService
 	 */
-	isSeriesInDatabase(series: Series):boolean {
+	isSeriesInDatabase(series: Series): boolean {
 		const entry = this.get(`/series/${series.id}`);
-		if(entry.length == 0) {
+		if (entry.length === 0) {
 			return false;
 		}
 		return true;
@@ -48,15 +48,15 @@ export class FirebaseService {
 
 	/**
 	 * Returns true if the series is in the database at /users/${userid}/series entry.
-	 * 
-	 * @param {Series} series 
-	 * @returns {boolean} 
+	 *
+	 * @param {Series} series
+	 * @returns {boolean}
 	 * @memberof FirebaseService
 	 */
-	isSeriesInUserDatabase(series: Series):boolean {
+	isSeriesInUserDatabase(series: Series): boolean {
 		const uid = this.auth.getUser().uid;
 		const entry = this.get(`/users/${uid}/series/${series.id}`);
-		if(entry.length == 0) {
+		if (entry.length === 0) {
 			return false;
 		}
 		return true;

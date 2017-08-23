@@ -1,44 +1,58 @@
 export class Series {
-	/**
-	 * Image path.
-	 *
-	 * @type {string}
-	 * @memberof Serie
-	 */
-	backdropd_path: string;
-
-	/**
-	 * Date of the first airing in the tv.
-	 *
-	 * @type {string}
-	 * @memberof Serie
-	 */
-	first_air_date: string;
-
-	/**
-	 * Genre IDs of this series.
-	 *
-	 * @type {Array<Number>}
-	 * @memberof Serie
-	 */
-	genre_ids: Array<Number>;
-
 	id: number;
 	name: string;
-	origin_country: Array<string>;
-	original_language: string;
-	original_name: string;
 	overview: string;
-	popularity: number;
-	poster_path: string;
-	vote_average: number;
-	vote_counter: number;
+	airDate: Date;
+	posterUrl: string;
+
+	/**
+	 * Series rating.
+	 * 
+	 * @type {number}
+	 * @memberof Series
+	 */
+	rating: number;
+
+	/**
+	 * Counter of Votes.
+	 * 
+	 * @type {number}
+	 * @memberof Series
+	 */
+	votes: number;
+	seasons: Array<Season>;
+
+	constructor(id: number = 0, name: string = '', overview: string = '', airDate: string = '') {
+		this.name = name;
+		this.overview = overview;
+		this.airDate = new Date(airDate);
+		this.seasons = new Array<Season>();
+	}
 }
 
 export class Season {
+	episodes: Array<Episode>;
+	episodeAmout: number;
+	seasonNumber: number;
+	name: string;
+	overview: string;
 
+	constructor(name: string, episodeAmout: number, seasonNumber) {
+		this.name = name;
+		this.episodeAmout = episodeAmout;
+		this.seasonNumber = seasonNumber;
+		this.episodes = new Array<Episode>();
+	}
 }
 
 export class Episode {
-	
+	name: string;
+	overview: string;
+	airDate: Date;
+
+	constructor(name: string, overview: string, airdate: string) {
+		this.name = name;
+		this.overview = overview;
+		this.airDate = new Date(airdate);
+	}
 }

@@ -30,8 +30,40 @@ describe('SeriesapiService', () => {
 	});
 
 	it('should find a series by name', (done) => {
-		classUnderTest.findSerieByName("The Walking Dead", (res: any) => {
+		classUnderTest.findSerieByName('The Walking Dead', (res: any) => {
 			expect(res.length).toBeGreaterThan(0);
+			done();
+		});
+	});
+
+	it('should find series info by id', (done) => {
+		// The Walking Dead Info
+		classUnderTest.getSeries(1402, (res: any) => {
+			expect(res).toBeDefined();
+			done();
+		});
+	});
+
+	it('should find season info by id', (done) => {
+		// The Walking Dead Info
+		classUnderTest.getSeriesSeason(1402, 1, (res: any) => {
+			expect(res).toBeDefined();
+			done();
+		});
+	});
+
+	it('should find episode info by id', (done) => {
+		// The Walking Dead Info
+		classUnderTest.getSeriesEpisode(1402, 1, 1, (res: any) => {
+			expect(res).toBeDefined();
+			done();
+		});
+	});
+
+	it('should build a series by id', (done) => {
+		// The Walking Dead Info
+		classUnderTest.getCompleteSeries(1402, (res: any) => {
+			expect(res).toBeDefined();
 			done();
 		});
 	});
