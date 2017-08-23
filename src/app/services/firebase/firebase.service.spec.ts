@@ -13,6 +13,7 @@ import { AuthentificationMock } from '../authentification/authentification.servi
 import { Authentification } from '../authentification/authentification.service';
 
 describe('FirebaseService', () => {
+	let classUnderTest: FirebaseService = null;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -23,6 +24,10 @@ describe('FirebaseService', () => {
 			providers: [FirebaseService, { provide: Authentification, useClass: AuthentificationMock }]
 		});
 	});
+
+	beforeEach(inject([FirebaseService], (service: FirebaseService) => {
+		classUnderTest = service;
+	}));
 
 	it('should be created', inject([FirebaseService], (service: FirebaseService) => {
 		expect(service).toBeTruthy();
@@ -52,12 +57,8 @@ describe('FirebaseService', () => {
 	}));
 
 	it('should add 2 series to user', inject([FirebaseService], (service: FirebaseService) => {
-		const series = new Series();
-		series.name = 'name';
-		series.id = 1231235123;
-		const series2 = new Series();
-		series2.name = 'name';
-		series2.id = 51231245123;
+		const series = new Series(1231235123, 'name');
+		const series2 = new Series(51231245123, 'name');
 		service.addSeriesToUser(series);
 		service.addSeriesToUser(series2);
 		const result = service.getUserSeries();
@@ -65,20 +66,18 @@ describe('FirebaseService', () => {
 	}));
 
 	it('should add series to series database', inject([FirebaseService], (service: FirebaseService) => {
-		const series = new Series();
-		series.name = 'name';
-		series.id = 1231235123;
+		const series = new Series(1231235123, 'name');
 		service.addSeries(series);
 		const result = service.getSeries();
 		expect(result.length).toBe(1);
 	}));
 
-	it('should have series entry in the database after adding it', inject([FirebaseService], (service: FirebaseService) => {
-		const series = new Series();
-		series.name = 'name';
-		series.id = 4458471;
-		service.addSeries(series);
-		const result = service.isSeriesInDatabase(series.id);
-		expect(result).toBe(true);
-	}));
+	it('should have series entry in the database after adding it', (done) => {
+		const series = new Series(4458471, 'name');
+		classUnderTest.addSeries(series);
+		classUnderTest.isSeriesInDatabase(series.$id, (result) => {
+			expect(result).toBe(true);
+			done();
+		});
+	});
 });

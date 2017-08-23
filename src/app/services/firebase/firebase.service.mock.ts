@@ -8,7 +8,7 @@ export class FirebaseServiceMock {
 	findSerieByName() {
 	}
 
-	testIsSeriesInDatabase(id: number, callback = () => {}) {
+	isSeriesInDatabase(id: number, callback = () => {}) {
 		callback();
 	}
 }

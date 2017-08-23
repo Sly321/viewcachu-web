@@ -17,7 +17,7 @@ export class FirebaseService {
 	 * @memberof FirebaseService
 	 */
 	addSeries(series: Series): void {
-		this.write(series, `/series/${series.id}`);
+		this.write(series, `/series/${series.$id}`);
 	}
 
 	/**
@@ -28,26 +28,17 @@ export class FirebaseService {
 	 */
 	addSeriesToUser(series: Series, callback = () => {}): void {
 		const uid = this.auth.getUser().uid;
-		this.write(series, `/users/${uid}/series/${series.id}`, callback);
+		this.write(series, `/users/${uid}/series/${series.$id}`, callback);
 	}
 
 	/**
-	 * Returns true if the series is in the database at /series entry.
-	 *
-	 * @param {number} seriesId
-	 * @returns {boolean}
+	 * Calls the database and checks if the series is present.
+	 * 
+	 * @param seriesId ID of the series.
+	  * @param {any} [callback=(val: boolean) => {}] Called with a boolean, true if series is in the database, false if not.
 	 * @memberof FirebaseService
 	 */
-	isSeriesInDatabase(seriesId: number): boolean {
-		const entry = this.get(`/series/${seriesId}`);
-		console.log(entry);
-		if (entry === undefined || entry.length === 0) {
-			return false;
-		}
-		return true;
-	}
-
-	testIsSeriesInDatabase(seriesId: number, callback: any): void {
+	isSeriesInDatabase(seriesId: number, callback = (val: boolean) => {}): void {
 		const entry = this.testget(`/series/${seriesId}`, (value: any) => {
 			if (value.length === 0) {
 				callback(false);

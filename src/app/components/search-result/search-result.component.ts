@@ -23,7 +23,7 @@ export class SearchResultComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.fb.testIsSeriesInDatabase(this.serie.id, (result) => {
+		this.fb.isSeriesInDatabase(this.serie.id, (result) => {
 			this.isAdded = result;
 		});
 	}

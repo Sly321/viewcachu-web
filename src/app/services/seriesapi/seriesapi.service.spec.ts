@@ -64,6 +64,7 @@ describe('SeriesapiService', () => {
 		// The Walking Dead Info
 		classUnderTest.getCompleteSeries(1402, (res: any) => {
 			expect(res).toBeDefined();
+			console.log(res);
 			done();
 		});
 	});

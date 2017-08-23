@@ -92,19 +92,22 @@ export class SeriesapiService {
 	 * Returns a complete {@link Series} object with seasons and episodes.
 	 * 
 	 * @param {number} id ID of the Series
-	 * @param {*} callback Callback with Series as parameter
+	 * @param {*} [callback=(series: Series) void => {}]  Callback with Series as parameter
 	 * @memberof SeriesapiService
 	 */
-	getCompleteSeries(id: number, callback: any): void {
+	getCompleteSeries(id: number, callback = (series: Series): void => {}): void {
 		const self = this;
 		this.getSeries(id, (seriesData) => {
 			const name = seriesData.name;
 			const overview = seriesData.overview;
 			const airDate = seriesData.first_air_date;
 			const series: Series = new Series(id, name, overview, airDate);
-			series.posterUrl = `${self.POSTER_URL}${seriesData.backdrop_path}`;
-
+			series.$posterUrl = `${self.POSTER_URL}${seriesData.backdrop_path}`;
+			series.$rating = seriesData.vote_average;
+			series.$votes = seriesData.vote_count;
 			const lastSeason = seriesData.number_of_seasons;
+
+			console.log(seriesData);
 
 			seriesData.seasons.forEach(seasonIterator => {
 				if (seasonIterator.season_number !== 0) {
@@ -117,10 +120,10 @@ export class SeriesapiService {
 						seasonData.episodes.forEach(episode => {
 							season.episodes.push(new Episode(episode.name, episode.overview, episode.air_date));
 						});
-						series.seasons.push(season);
+						series.$seasons.push(season);
 
 						if (seasonNumber === lastSeason) {
-							series.seasons.sort((a, b) => {
+							series.$seasons.sort((a, b) => {
 								return a.seasonNumber - b.seasonNumber;
 							});
 							callback(series);
