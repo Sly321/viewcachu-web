@@ -15,7 +15,6 @@ export class BoardComponent implements OnInit {
 	constructor(private fb: FirebaseService) {
 		this.loading = true;
 		this.list = new Array<Series>();
-		console.log('constructor');
 	}
 
 	ngOnInit() {
