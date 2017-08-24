@@ -45,30 +45,36 @@ describe('FirebaseService', () => {
 		expect(data.length).toBe(1);
 	}));
 
-	it('should not have user database', inject([FirebaseService], (service: FirebaseService) => {
-		const result = service.hasUserDb();
-		expect(result).toBe(false);
-	}));
+	it('should not have user database', done => {
+		classUnderTest.hasUserDb((result) => {
+			expect(result).toBe(false);
+			done();
+		});
+	});
 
-	it('should create user database', inject([FirebaseService], (service: FirebaseService) => {
-		service.createUserDb();
-		const result = service.hasUserDb();
-		expect(result).toBe(true);
-	}));
+	it('should create user database', done => {
+		classUnderTest.createUserDb();
+		classUnderTest.hasUserDb((result) => {
+			expect(result).toBe(true);
+			done();
+		});
+	});
 
-	it('should add 2 series to user', inject([FirebaseService], (service: FirebaseService) => {
+	it('should add 2 series to user', done => {
 		const series = new Series(1231235123, 'name');
 		const series2 = new Series(51231245123, 'name');
-		service.addSeriesToUser(series);
-		service.addSeriesToUser(series2);
-		const result = service.getUserSeries();
-		expect(result.length).toBe(2);
-	}));
+		classUnderTest.addSeriesToUser(series);
+		classUnderTest.addSeriesToUser(series2);
+		classUnderTest.getUserSeries(result => {
+			expect(result.length).toBe(2);
+			done();
+		});
+	});
 
 	it('should add series to series database', inject([FirebaseService], (service: FirebaseService) => {
 		const series = new Series(1231235123, 'name');
 		service.addSeries(series);
-		const result = service.getSeries();
+		const result = service.getAllSeries();
 		expect(result.length).toBe(1);
 	}));
 

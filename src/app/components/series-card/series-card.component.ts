@@ -32,12 +32,15 @@ export class SeriesCardComponent implements OnInit {
 	private getActiveSeason(): number {
 		let activeSeason = 1;
 
-		this.series.$seasons.some(season => {
-			return season.$episodes.some(episode => {
-				activeSeason = season.$seasonNumber;
-				return !episode.$watched;
+		console.log(this.series);
+		if (this.series) {
+			this.series.$seasons.some(season => {
+				return season.$episodes.some(episode => {
+					activeSeason = season.$seasonNumber;
+					return !episode.$watched;
+				});
 			});
-		});
+		}
 
 		return activeSeason;
 	}

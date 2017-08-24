@@ -6,8 +6,10 @@ import { SeriesConverter } from '../../converter/SeriesConverter';
 
 import { Series, Season, Episode } from '../../models/series';
 
+import { FirebaseServiceInterface } from './firebase.interface';
+
 @Injectable()
-export class FirebaseService {
+export class FirebaseService implements FirebaseServiceInterface {
 
 	constructor(private db: AngularFireDatabase, private auth: Authentification) {
 	}
@@ -18,7 +20,7 @@ export class FirebaseService {
 	 * @param {Series} series Series Object
 	 * @memberof FirebaseService
 	 */
-	addSeries(series: Series): void {
+	public addSeries(series: Series): void {
 		this.write(series, `/series/${series.$id}`);
 	}
 
@@ -73,7 +75,7 @@ export class FirebaseService {
 	 * @param {any} [callback=(val: Series) => {}] Callback with the series as parameter.
 	 * @memberof FirebaseService
 	 */
-	getSeries(id: number, callback = (val: Series) => {}) {
+	getSeries(id: number, callback = (val: Series) => {}): void {
 		const singleCallback = (val: any) => {
 			if (val.$exists()) {
 				callback(SeriesConverter.convertResponseToSeries(val));
@@ -106,6 +108,7 @@ export class FirebaseService {
 		const uid = this.auth.getUser().uid;
 		const allSeriesCallback = (val: Array<Series>) => {
 			const resArray = new Array<Series>();
+			console.log(val);
 			val.forEach(element => {
 				resArray.push(SeriesConverter.convertResponseToSeries(element));
 			});

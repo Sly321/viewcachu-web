@@ -9,6 +9,9 @@ import { UserComponent } from '../user/user.component';
 import { SearchComponent } from '../search/search.component';
 import { BoardComponent } from '../board/board.component';
 
+import {FirebaseServiceMock} from '../../services/firebase/firebase.service.mock';
+import {FirebaseService} from '../../services/firebase/firebase.service';
+
 import { FormsModule } from '@angular/forms';
 
 import { HomeComponent } from './home.component';
@@ -31,6 +34,12 @@ describe('HomeComponent', () => {
 			set: {
 				providers: [{ provide: SeriesapiService, useClass: SeriesapiServiceMock }],
 				template: '<h1>Search Component Mock</h1>',
+				templateUrl: './mock.html',
+			}
+		}).overrideComponent(BoardComponent, {
+			set: {
+				providers: [{ provide: FirebaseService, useClass: FirebaseServiceMock }],
+				template: '<h1>Board Component Mock</h1>',
 				templateUrl: './mock.html',
 			}
 		})

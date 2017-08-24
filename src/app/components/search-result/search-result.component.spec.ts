@@ -19,7 +19,7 @@ describe('SearchResultComponent', () => {
 		}).overrideComponent(SearchResultComponent, {
 			set: {
 				providers: [{ provide: FirebaseService, useClass: FirebaseServiceMock },
-					{ provide: SeriesapiService, useClass: SeriesapiServiceMock }]
+							{ provide: SeriesapiService, useClass: SeriesapiServiceMock }]
 			}
 		})
 		.compileComponents();

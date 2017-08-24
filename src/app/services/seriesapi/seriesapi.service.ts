@@ -6,6 +6,8 @@ import { Series, Season, Episode } from '../../models/series';
 import { SeriesInfoResponseByName } from '../../models/seriesInfoResponseByName';
 import { environment } from '../../../environments/environment';
 
+import { SeriesapiServiceInterface } from './seriesapi.interface';
+
 /**
  * Service for the API of themoviedb.org.
  * Developers Guide https://developers.themoviedb.org/3
@@ -14,7 +16,7 @@ import { environment } from '../../../environments/environment';
  * @class SeriesapiService
  */
 @Injectable()
-export class SeriesapiService {
+export class SeriesapiService implements SeriesapiServiceInterface {
 	/** Url der API. */
 	private API_URL = 'https://api.themoviedb.org/3';
 
@@ -54,7 +56,7 @@ export class SeriesapiService {
 	 * @param {*} callback Callback with parameter that returns the data
 	 * @memberof SeriesapiService
 	 */
-	getSeries(id: number, callback: any) {
+	public getSeries(id: number, callback: any): void {
 		const url = `${this.API_URL}${this.BY_ID}${id}${environment.themoviedb}${this.LANG_PARAM}`;
 		this.callApi(url, callback, false);
 	}
@@ -67,7 +69,7 @@ export class SeriesapiService {
 	 * @param {*} callback Callback with parameter that returns the data
 	 * @memberof SeriesapiService
 	 */
-	getSeriesSeason(id: number, season: number, callback: any): void {
+	public getSeriesSeason(id: number, season: number, callback: any): void {
 		const url = `${this.API_URL}${this.BY_ID}${id}${this.SEASON}${season}${environment.themoviedb}${this.LANG_PARAM}`;
 		this.callApi(url, callback, false);
 	}
@@ -81,7 +83,7 @@ export class SeriesapiService {
 	 * @param {*} callback Callback with parameter that returns the data
 	 * @memberof SeriesapiService
 	 */
-	getSeriesEpisode(id: number, season: number, episode: number, callback: any): void {
+	public getSeriesEpisode(id: number, season: number, episode: number, callback: any): void {
 		let url = `${this.API_URL}${this.BY_ID}${id}${this.SEASON}${season}`;
 		url += `${this.EPISODE}${episode}${environment.themoviedb}${this.LANG_PARAM}`;
 		this.callApi(url, callback, false);
@@ -141,7 +143,7 @@ export class SeriesapiService {
 	 * @callback callback Calls this function after the api call with an Array of SeriesInfoResponseByName
 	 * @memberof SeriesapiService
 	 */
-	findSerieByName(name: string, callback: any): void {
+	public findSerieByName(name: string, callback: any): void {
 		const url = `${this.API_URL}${this.BY_NAME}${environment.themoviedb}&query=${name}`;
 		const findSeriesByNameCall = (res: any) => {
 			callback(res.results);
