@@ -11,10 +11,13 @@ import {Series} from '../../models/series';
 })
 export class SeriesCardComponent implements OnInit {
 	@Input() series: Series;
+	private activeSeason: number;
 
-	constructor() { }
+	constructor() {
+	}
 
 	ngOnInit() {
+		this.activeSeason = this.getActiveSeason();
 	}
 
 	getImageSrc() {
@@ -23,6 +26,31 @@ export class SeriesCardComponent implements OnInit {
 			return url;
 		} else {
 			return 'bright-squares.53c1ec5f96d716d4265e.png';
+		}
+	}
+
+	private getActiveSeason(): number {
+		let activeSeason = 1;
+
+		this.series.$seasons.some(season => {
+			return season.$episodes.some(episode => {
+				activeSeason = season.$seasonNumber;
+				return !episode.$watched;
+			});
+		});
+
+		return activeSeason;
+	}
+
+	private decrementActiveSeason(): void {
+		if (this.activeSeason > 1) {
+			this.activeSeason--;
+		}
+	}
+
+	private incrementActiveSeason(): void {
+		if (this.activeSeason < (this.series.$seasons.length)) {
+			this.activeSeason++;
 		}
 	}
 }

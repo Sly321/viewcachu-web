@@ -9,13 +9,21 @@
 		</div>
 		<div class="seasons-wrapper">
 			<div class="season-container" *ngFor="let season of series.seasons">
-				<div class="season">
-					<div class="season-title">{{ season.seasonNumber }}</div>
+				<div class="season" [ngClass]="activeSeason == season.seasonNumber ? 'active' : ''">
+					<div class="season-title">{{ 'Staffel ' + season.seasonNumber }}</div>
 					<div class="episodes-wrapper">
 						<div class="episode-container" *ngFor="let episode of season.episodes">
 							{{ episode.watched ? 'x' : 'o' }}
 						</div>
 					</div>
+				</div>
+			</div>
+			<div class="season-navigation">
+				<div (click)="decrementActiveSeason()">
+					<span class="fa fa-arrow-up"></span>
+				</div>
+				<div (click)="incrementActiveSeason()">
+					<span class="fa fa-arrow-down"></span>
 				</div>
 			</div>
 		</div>

@@ -52,6 +52,11 @@
             bottom: 0;
 
             .season {
+                display: none;
+                &.active {
+                    display: block;
+                }
+
                 .season-title {
                     display: inline-block;
                 }
@@ -63,6 +68,13 @@
                         display: inline-block;
                     }
                 }
+            }
+
+            .season-navigation {
+                display: block;
+                position: absolute;
+                right: 5px;
+                top: 0;
             }
         }
     }
