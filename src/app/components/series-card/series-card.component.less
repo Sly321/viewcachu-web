@@ -45,6 +45,25 @@
         .seasons-wrapper {
             display: inline-block;
             float: left;
+            height: 60px;
+            overflow: auto;
+            position: absolute;
+            width: calc(100% ~"-" 200px);
+            bottom: 0;
+
+            .season {
+                .season-title {
+                    display: inline-block;
+                }
+
+                .episodes-wrapper {
+                    display: inline-block;
+                    
+                    .episode-container {
+                        display: inline-block;
+                    }
+                }
+            }
         }
     }
 }

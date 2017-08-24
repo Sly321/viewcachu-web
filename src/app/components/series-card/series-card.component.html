@@ -10,10 +10,10 @@
 		<div class="seasons-wrapper">
 			<div class="season-container" *ngFor="let season of series.seasons">
 				<div class="season">
-					<div class="season-title">{{ season.name }}</div>
+					<div class="season-title">{{ season.seasonNumber }}</div>
 					<div class="episodes-wrapper">
-						<div class="episode-container" *ngFor="let episode of series.episodes">
-							o
+						<div class="episode-container" *ngFor="let episode of season.episodes">
+							{{ episode.watched ? 'x' : 'o' }}
 						</div>
 					</div>
 				</div>

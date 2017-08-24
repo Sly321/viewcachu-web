@@ -200,7 +200,7 @@ export class Episode {
 		this.name = name;
 		this.overview = overview;
 		this.airDate = new Date(airdate);
-		this.watched = false;
+		this.watched = watched;
 	}
 
 	public get $name(): string {
