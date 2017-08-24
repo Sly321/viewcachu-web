@@ -1,3 +1,15 @@
-<p>
-  board works!
-</p>
+<div class="board-wrapper">
+	<div class="board-container">
+		<div *ngIf="!loading">
+			<div *ngFor="let serie of list">
+				{{ serie.name }}
+			</div>
+		</div>
+		<div *ngIf="loading">
+			<div *ngFor="let placeholder of [1, 2, 3, 4, 5]">
+				<div class="animated-background placeholder">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -79,21 +79,15 @@ export class FirebaseService {
 		return result;
 	}
 
-
 	/**
 	 * Returns all series from Firebase located in /users/${userid}/series/
 	 * 
-	 * @returns {Array<Series>}
+	 * @param {any} [callback=(val: Array<Series>) => {}] 
 	 * @memberof FirebaseService
 	 */
-	getUserSeries(): Array<Series> {
+	getUserSeries(callback = (val: Array<Series>) => {}): void {
 		const uid = this.auth.getUser().uid;
-		const seriesDb = this.get(`/users/${uid}/series/`);
-		const result: Array<Series> = [];
-		seriesDb.forEach(element => {
-			result.push(element);
-		});
-		return result;
+		const seriesDb = this.testget(`/users/${uid}/series/`, callback);
 	}
 
 	/**
