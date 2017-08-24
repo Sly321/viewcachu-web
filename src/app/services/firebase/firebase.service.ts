@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Authentification } from '../../services/authentification/authentification.service';
 
+import { SeriesConverter } from '../../converter/SeriesConverter';
+
 import { Series, Season, Episode } from '../../models/series';
 
 @Injectable()
@@ -74,7 +76,7 @@ export class FirebaseService {
 	getSeries(id: number, callback = (val: Series) => {}) {
 		const singleCallback = (val: any) => {
 			if (val.$exists()) {
-				callback(this.convertResponseToSeries(val));
+				callback(SeriesConverter.convertResponseToSeries(val));
 			}
 		};
 		this.getNodeData(`/series/${id}`, singleCallback);
@@ -105,7 +107,7 @@ export class FirebaseService {
 		const allSeriesCallback = (val: Array<Series>) => {
 			const resArray = new Array<Series>();
 			val.forEach(element => {
-				resArray.push(this.convertResponseToSeries(element));
+				resArray.push(SeriesConverter.convertResponseToSeries(element));
 			});
 			callback(resArray);
 		};
@@ -201,18 +203,5 @@ export class FirebaseService {
 	write(value: any, nodeString: string, callback = () => {}) {
 		const node = this.db.list('/');
 		node.update(nodeString, value).then(callback);
-	}
-
-	convertResponseToSeries(r: any): Series {
-		const seasons = new Array<Season>();
-		r.seasons.forEach(el => {
-			const episodes = new Array<Episode>();
-			el.episodes.forEach(epEl => {
-				episodes.push(new Episode(epEl.name, epEl.overview, epEl.airDate));
-			});
-			seasons.push(new Season(el.name, el.overview, el.seasonNumber, episodes, el.episodeAmount));
-		});
-		const series = new Series(r.id, r.name, r.overview, r.airDate, r.posterUrl, r.rating, r.votes);
-		return series;
 	}
 }
