@@ -53,4 +53,16 @@ export class SeriesCardComponent implements OnInit {
 			this.activeSeason++;
 		}
 	}
+
+	private getSeasonClass(num: number): string {
+		if (num === this.activeSeason) {
+			return 'active';
+		} else if (num - 1 === this.activeSeason) {
+			return 'preactive';
+		} else if (num + 1 === this.activeSeason) {
+			return 'preactive';
+		} else {
+			return '';
+		}
+	}
 }

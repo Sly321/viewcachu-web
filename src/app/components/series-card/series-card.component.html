@@ -9,7 +9,7 @@
 		</div>
 		<div class="seasons-wrapper">
 			<div class="season-container" *ngFor="let season of series.seasons">
-				<div class="season" [ngClass]="activeSeason == season.seasonNumber ? 'active' : ''">
+				<div class="season" [ngClass]="getSeasonClass(season.seasonNumber)">
 					<div class="season-title">{{ 'Staffel ' + season.seasonNumber }}</div>
 					<div class="episodes-wrapper">
 						<div class="episode-container" *ngFor="let episode of season.episodes">

@@ -52,9 +52,18 @@
             bottom: 0;
 
             .season {
-                display: none;
+                height: 0;
+                font-size: 0px;
+                transition: all 0.2s ease;
+
                 &.active {
-                    display: block;
+                    height: 23px;
+                    font-size: 18px;
+                }
+
+                &.preactive {
+                    height: 16px;
+                    font-size: 12px;
                 }
 
                 .season-title {
@@ -75,6 +84,16 @@
                 position: absolute;
                 right: 5px;
                 top: 0;
+
+                div {
+                    -webkit-touch-callout: none; /* iOS Safari */
+                    -webkit-user-select: none; /* Safari */
+                     -khtml-user-select: none; /* Konqueror HTML */
+                       -moz-user-select: none; /* Firefox */
+                        -ms-user-select: none; /* Internet Explorer/Edge */
+                            user-select: none; /* Non-prefixed version, currently
+                                                  supported by Chrome and Opera */
+                }
             }
         }
     }
