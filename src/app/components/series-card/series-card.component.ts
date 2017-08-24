@@ -17,4 +17,12 @@ export class SeriesCardComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	getImageSrc() {
+		const url = this.series.$posterUrl;
+		if (url.endsWith('jpg')) {
+			return url;
+		} else {
+			return 'bright-squares.53c1ec5f96d716d4265e.png';
+		}
+	}
 }

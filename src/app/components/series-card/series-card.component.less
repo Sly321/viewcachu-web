@@ -1,13 +1,41 @@
-@card-height: 50px;
+@card-height: 169px;
 @card-width: 500px;
 
 .series-card-wrapper {
     height: @card-height;
     width: @card-width;
+    position: relative;
 
     .series-card-container {
-        div {
-            
+        .banner-wrapper {
+            display: inline-block;
+            position: relative;
+            height: 169px;
+            overflow: hidden;
+
+            img {
+                z-index: 4;
+            }
+
+            .image-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 5;
+                background: rgba(255, 255, 255, 0.24);
+            }
+        }
+        
+        .title-wrapper {
+            position: absolute;
+            z-index: 6;
+            font-size: 35px;
+            top: 3px;
+            left: 10px;
+            text-shadow: 1px 1px 5px #989898;
+            font-weight: bolder;
         }
     }
 }
