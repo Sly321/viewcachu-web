@@ -24,6 +24,10 @@ export class BoardComponent implements OnInit {
 			}
 		});
 		this.fb.getUserSeries((array: Array<Series>) => {
+			if (array.length === 0) {
+				this.loading = false;
+				return;
+			}
 			this.list = new Array<Series>();
 			this.loading = true;
 			const waitfor = array.length;
