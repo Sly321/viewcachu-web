@@ -14,11 +14,19 @@ export class BoardComponent implements OnInit {
 
 	constructor(private fb: FirebaseService) {
 		this.loading = true;
+		this.list = new Array<Series>();
 	}
 
 	ngOnInit() {
 		this.fb.getUserSeries((array: Array<Series>) => {
-			this.list = array;
+			console.log(array);
+			array.forEach((series: Series) => {
+				console.log(series);
+				this.fb.getSeries(series.$id, (seriesResult: Series) => {
+					console.log(seriesResult);
+					this.list.push(seriesResult);
+				});
+			});
 			this.loading = false;
 		});
 	}

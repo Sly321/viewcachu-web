@@ -13,8 +13,8 @@
     animation-iteration-count: infinite;
     animation-name: placeHolderShimmer;
     animation-timing-function: linear;
-    background: #f6f7f8;
-    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background: rgba(246, 247, 248, 0.45);
+    background: linear-gradient(to right, rgba(238, 238, 238, 0.40) 8%, rgba(221, 221, 221, 0.40) 18%, rgba(238, 238, 238, 0.40) 33%);
     background-size: 800px 104px;
     height: 96px;
     position: relative;

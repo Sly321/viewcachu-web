@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Authentification } from '../../services/authentification/authentification.service';
 
-import { Series } from '../../models/series';
+import { Series, Season, Episode } from '../../models/series';
 
 @Injectable()
 export class FirebaseService {
@@ -65,12 +65,27 @@ export class FirebaseService {
 	}
 
 	/**
+	 * Searches for a specific series in the /series/ node.
+	 * 
+	 * @param {number} id ID of the Series
+	 * @param {any} [callback=(val: Series) => {}] Callback with the series as parameter.
+	 * @memberof FirebaseService
+	 */
+	getSeries(id: number, callback = (val: Series) => {}) {
+		const singleCallback = (val: any) => {
+			if (val.$exists()) {
+				callback(this.convertResponseToSeries(val));
+			}
+		};
+		this.getNodeData(`/series/${id}`, singleCallback);
+	}
+
+	/**
 	 * Returns all series from Firebase located in /series
 	 * 
 	 * @memberof FirebaseService
 	 */
-	getSeries(): Array<Series> {
-		const uid = this.auth.getUser().uid;
+	getAllSeries(): Array<Series> {
 		const seriesDb = this.get(`/series/`);
 		const result: Array<Series> = [];
 		seriesDb.forEach(element => {
@@ -87,7 +102,14 @@ export class FirebaseService {
 	 */
 	getUserSeries(callback = (val: Array<Series>) => {}): void {
 		const uid = this.auth.getUser().uid;
-		const seriesDb = this.testget(`/users/${uid}/series/`, callback);
+		const allSeriesCallback = (val: Array<Series>) => {
+			const resArray = new Array<Series>();
+			val.forEach(element => {
+				resArray.push(this.convertResponseToSeries(element));
+			});
+			callback(resArray);
+		};
+		const seriesDb = this.testget(`/users/${uid}/series/`, allSeriesCallback);
 	}
 
 	/**
@@ -157,6 +179,12 @@ export class FirebaseService {
 		return result[0];
 	}
 
+	getNodeData(location: string, callback = (val: any) => {}): void {
+		this.db.object(location).subscribe((v: any) => {
+			callback(v);
+		});
+	}
+
 	testget(nodeString: string, callback: any): void {
 		const node = this.db.list(nodeString).subscribe((v: any) => {
 			callback(v);
@@ -173,5 +201,18 @@ export class FirebaseService {
 	write(value: any, nodeString: string, callback = () => {}) {
 		const node = this.db.list('/');
 		node.update(nodeString, value).then(callback);
+	}
+
+	convertResponseToSeries(r: any): Series {
+		const seasons = new Array<Season>();
+		r.seasons.forEach(el => {
+			const episodes = new Array<Episode>();
+			el.episodes.forEach(epEl => {
+				episodes.push(new Episode(epEl.name, epEl.overview, epEl.airDate));
+			});
+			seasons.push(new Season(el.name, el.overview, el.seasonNumber, episodes, el.episodeAmount));
+		});
+		const series = new Series(r.id, r.name, r.overview, r.airDate, r.posterUrl, r.rating, r.votes);
+		return series;
 	}
 }
