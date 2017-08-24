@@ -6,6 +6,7 @@
     height: @card-height;
     width: @card-width;
     position: relative;
+    overflow: hidden;
 
     .series-card-container {
         .banner-wrapper {
@@ -13,6 +14,7 @@
             position: relative;
             height: @card-height;
             overflow: hidden;
+            float: left;
 
             img {
                 z-index: 4;
@@ -38,6 +40,11 @@
             left: 10px;
             text-shadow: 1px 1px 5px #989898;
             font-weight: bolder;
+        }
+
+        .seasons-wrapper {
+            display: inline-block;
+            float: left;
         }
     }
 }

@@ -7,5 +7,17 @@
 		<div class="title-wrapper">
 			{{ series.name }}
 		</div>
+		<div class="seasons-wrapper">
+			<div class="season-container" *ngFor="let season of series.seasons">
+				<div class="season">
+					<div class="season-title">{{ season.name }}</div>
+					<div class="episodes-wrapper">
+						<div class="episode-container" *ngFor="let episode of series.episodes">
+							o
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

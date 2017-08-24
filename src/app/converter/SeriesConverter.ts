@@ -25,6 +25,7 @@ export class SeriesConverter {
 
 	private static convertResponseToSeasonArray(response: any): Array<Season> {
 		const seasonArray = new Array<Season>();
+		console.log("asdf");
 		response.forEach(element => {
 			seasonArray.push(this.convertResponseToSeason(element));
 		});
@@ -32,11 +33,11 @@ export class SeriesConverter {
 	}
 
 	private static convertResponseToSeason(response: any): Season {
-		const season = new Season();
 		const episodes = new Array<Episode>();
 		response.episodes.forEach(epEl => {
 			episodes.push(this.convertResponseToEpisode(epEl));
 		});
+		const season = new Season(response.name, response.overview, response.seasonNumber, episodes, response.episodesAmount);
 		return season;
 	}
 
