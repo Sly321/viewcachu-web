@@ -31,7 +31,10 @@ input {
     max-width: 100%;
 	float: right;
     max-height: 800px;
-    overflow: auto
+	overflow: auto;
+	position: absolute;
+    right: 15px;
+    top: 50px;
 }
 
 .search-result-container {

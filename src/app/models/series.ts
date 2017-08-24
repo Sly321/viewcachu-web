@@ -56,7 +56,6 @@ export class Series {
 		this.id = value;
 	}
 
-
 	public get $overview(): string {
 		return this.overview;
 	}
@@ -188,6 +187,7 @@ export class Episode {
 	private name: string;
 	private overview: string;
 	private airDate: Date;
+	private watched: boolean;
 
 	/**
 	 * Creates an instance of Episode.
@@ -196,10 +196,11 @@ export class Episode {
 	 * @param {string} [airdate=''] Air date of this episode.
 	 * @memberof Episode
 	 */
-	constructor(name = '', overview = '', airdate = '') {
+	constructor(name = '', overview = '', airdate = '', watched = false) {
 		this.name = name;
 		this.overview = overview;
 		this.airDate = new Date(airdate);
+		this.watched = false;
 	}
 
 	public get $name(): string {
@@ -224,5 +225,13 @@ export class Episode {
 
 	public set $airDate(value: Date) {
 		this.airDate = value;
+	}
+
+	public get $watched(): boolean {
+		return this.watched;
+	}
+
+	public set $watched(value: boolean) {
+		this.watched = value;
 	}
 }

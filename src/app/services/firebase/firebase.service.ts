@@ -41,7 +41,7 @@ export class FirebaseService {
 	 * @memberof FirebaseService
 	 */
 	isSeriesInDatabase(seriesId: number, callback = (val: boolean) => {}): void {
-		const entry = this.testget(`/series/${seriesId}`, (value: any) => {
+		this.testget(`/series/${seriesId}`, (value: any) => {
 			if (value.length === 0) {
 				callback(false);
 			} else {
@@ -115,25 +115,20 @@ export class FirebaseService {
 	}
 
 	/**
-	 * Checks if the user has a database entry.
 	 * 
-	 * @returns {boolean} 
+	 * 
+	 * @param {any} [callback=(hasEntry: boolean) => {}] 
 	 * @memberof FirebaseService
 	 */
-	hasUserDb(): boolean {
+	hasUserDb(callback = (hasEntry: boolean) => {}): void {
 		const uid: string = this.auth.getUser().uid;
-		if (uid) {
-			const db = this.get('/users/' + uid);
-			console.log(db);
-			console.log(`db.length ${db.length}`);
-			if (db.length !== 0) {
-				return true;
+		this.getNodeData(`/users/${uid}`, (response) => {
+			if (response.$exists()) {
+				callback(true);
 			} else {
-				return false;
+				callback(false);
 			}
-		} else {
-			return false;
-		}
+		});
 	}
 
 	/**
@@ -146,9 +141,14 @@ export class FirebaseService {
 		const userData = {
 			name: this.auth.getUser().displayName,
 			email: this.auth.getUser().email,
+			filter: {
+				finished: false,
+				active: false
+			},
 			series: {
 			}
 		};
+		console.log('creating user db');
 		this.write(userData, '/users/' + uid);
 	}
 
@@ -176,8 +176,6 @@ export class FirebaseService {
 		node.forEach((element: Array<any>) => {
 			result.push(element);
 		});
-		console.log(result);
-		console.log(result[0]);
 		return result[0];
 	}
 

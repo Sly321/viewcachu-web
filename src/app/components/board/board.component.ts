@@ -15,15 +15,20 @@ export class BoardComponent implements OnInit {
 	constructor(private fb: FirebaseService) {
 		this.loading = true;
 		this.list = new Array<Series>();
+		console.log('constructor');
 	}
 
 	ngOnInit() {
+		this.fb.hasUserDb((hasEntry) => {
+			if (!hasEntry) {
+				this.fb.createUserDb();
+			}
+		});
 		this.fb.getUserSeries((array: Array<Series>) => {
-			console.log(array);
+			this.list = new Array<Series>();
+			this.loading = true;
 			array.forEach((series: Series) => {
-				console.log(series);
 				this.fb.getSeries(series.$id, (seriesResult: Series) => {
-					console.log(seriesResult);
 					this.list.push(seriesResult);
 				});
 			});
