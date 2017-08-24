@@ -1,5 +1,6 @@
-@card-height: 169px;
-@card-width: 500px;
+// @card-height: 169px;
+@card-height: 112px;
+@card-width: 700px;
 
 .series-card-wrapper {
     height: @card-height;
@@ -10,11 +11,12 @@
         .banner-wrapper {
             display: inline-block;
             position: relative;
-            height: 169px;
+            height: @card-height;
             overflow: hidden;
 
             img {
                 z-index: 4;
+                width: 200px;
             }
 
             .image-overlay {
