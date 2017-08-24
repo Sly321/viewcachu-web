@@ -28,6 +28,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { routes } from './app.routes';
 import { environment } from '../environments/environment';
 import { UserComponent } from './components/user/user.component';
+import { SeriesCardComponent } from './components/series-card/series-card.component';
 
 @NgModule({
 	declarations: [
@@ -37,7 +38,8 @@ import { UserComponent } from './components/user/user.component';
 		SearchComponent,
 		SearchResultComponent,
 		BoardComponent,
-		UserComponent
+		UserComponent,
+		SeriesCardComponent
 	],
 	imports: [
 		BrowserModule,

@@ -1,8 +1,8 @@
 <div class="board-wrapper">
 	<div class="board-container">
 		<div *ngIf="!loading">
-			<div *ngFor="let serie of list">
-				{{ serie.name }}
+			<div *ngFor="let series of list">
+				<app-series-card [series]="series"></app-series-card>
 			</div>
 		</div>
 		<div *ngIf="loading">
