@@ -1,7 +1,7 @@
 <div class="board-wrapper">
 	<div class="board-container">
 		<div *ngIf="!loading">
-			<div *ngFor="let series of list">
+			<div class="series-card-iterator" *ngFor="let series of list">
 				<app-series-card [series]="series"></app-series-card>
 			</div>
 		</div>
