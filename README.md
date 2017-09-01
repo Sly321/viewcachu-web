@@ -6,6 +6,8 @@
 
 # Viewcachu
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Sly321/viewcachu-web.svg)](https://greenkeeper.io/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
 
 ## Development server
